@@ -37,6 +37,7 @@
       {
         "additionalHooks": "useRecoilCallback"
       }
-    ]
+    ],
+    "no-unused-expressions": "warn"
   }
 }
