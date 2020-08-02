@@ -1,11 +1,21 @@
 import React, { FunctionComponent } from "react";
-import { ThemeProvider, theme, CSSReset } from "@chakra-ui/core";
+import {
+  ThemeProvider,
+  CSSReset,
+  ColorModeProvider,
+} from "@chakra-ui/core";
 import { AppRouter } from "./AppRouter";
+import { ErrorBoundary } from "./Error/ErrorBoudary";
+import { customTheme } from "./customTheme";
 
 const App: FunctionComponent = () => (
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={customTheme}>
     <CSSReset />
-    <AppRouter />
+    <ColorModeProvider>
+      <ErrorBoundary>
+        <AppRouter />
+      </ErrorBoundary>
+    </ColorModeProvider>
   </ThemeProvider>
 );
 
