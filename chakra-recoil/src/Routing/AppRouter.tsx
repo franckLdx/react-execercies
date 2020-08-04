@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { About } from "./About";
-import { Posts } from "./Posts";
+import { About } from "../About";
+
+const Posts = React.lazy(() => import("../posts/Posts"));
 
 export const AppRouter: FunctionComponent = () => (
   <BrowserRouter>

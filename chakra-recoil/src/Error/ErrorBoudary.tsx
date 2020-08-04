@@ -11,7 +11,6 @@ export class ErrorBoundary extends React.Component<{}, ErrorBoundaryStrate> {
   };
 
   static getDerivedStateFromError() {
-    // Mettez à jour l'état, de façon à montrer l'UI de repli au prochain rendu.
     return { hasError: true };
   }
 
