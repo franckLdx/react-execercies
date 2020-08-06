@@ -1,9 +1,10 @@
 import React, { useEffect, FunctionComponent } from "react";
 import { loadPosts } from "../api/posts";
 import { postsAtom, Post } from "./model";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { Text, Flex, PseudoBox, Divider } from "@chakra-ui/core";
 import { Loading } from "../misc/Loading";
+import { usersFamily } from "../users/model";
 
 const Posts: FunctionComponent = () => {
   const [posts, setPosts] = useRecoilState(postsAtom);
@@ -23,17 +24,24 @@ const Posts: FunctionComponent = () => {
 interface PostItemProps {
   post: Post;
 }
-const PostItem: FunctionComponent<PostItemProps> = ({ post }) =>
-  <PseudoBox
-    w="350px" h="7.5em"
-    borderColor="gray.400" borderWidth="2px" rounded="lg" shadow="sm"
-    mt={{ base: 2, md: 4 }} p="2"
-    _hover={{ borderColor: "gray.900", fontWeight: "bold", shadow: "xl", borderWidth: "3px" }}
-  >
-    <Text fontSize="xl">
-      {post.title}
-    </Text>
-    <Divider />
-  </PseudoBox >;
-
+const PostItem: FunctionComponent<PostItemProps> = ({ post }) => {
+  const user = useRecoilValue(usersFamily(post.userId));
+  return (
+    <PseudoBox
+      w="350px"
+      borderColor="gray.400" borderWidth="2px" rounded="lg" shadow="sm"
+      mt={{ base: 2, md: 4 }} p="2"
+      fontSize="xl"
+      _hover={{ borderColor: "gray.900", fontWeight: "bold", shadow: "xl", borderWidth: "3px" }}
+    >
+      <Text h="5em" >
+        {post.title}
+      </Text>
+      <Divider />
+      <Text textAlign="right">
+        {user?.username}
+      </Text>
+    </PseudoBox >
+  )
+}
 export default Posts;
