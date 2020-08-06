@@ -8,15 +8,18 @@ import { AppRouter } from "./Routing/AppRouter";
 import { ErrorBoundary } from "./Error/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./Routing/LoadingProvider";
+import { RecoilRoot } from "recoil";
 
 const App: FunctionComponent = () => (
   <ThemeProvider theme={customTheme}>
     <CSSReset />
     <ColorModeProvider>
       <ErrorBoundary>
-        <LoadingProvider>
-          <AppRouter />
-        </LoadingProvider>
+        <RecoilRoot>
+          <LoadingProvider>
+            <AppRouter />
+          </LoadingProvider>
+        </RecoilRoot>
       </ErrorBoundary>
     </ColorModeProvider>
   </ThemeProvider>
