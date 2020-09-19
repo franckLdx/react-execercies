@@ -26,17 +26,17 @@ export const PostItem: FunctionComponent<PostItemProps> = ({ post }) => {
 
 const PostItemContainerProps: PseudoBoxProps = {
   w: "350px",
-  borderColor: "gray.400",
+  backgroundColor: "white",
+  borderColor: "gray.600",
   borderWidth: "2px",
   rounded: "lg",
-  shadow: "sm",
-  mt: { base: 2, md: 4 },
-  p: "2",
+  shadow: "xl",
   fontSize: "xl",
+  fontWeight: "500",
+  p: "2",
   _hover: {
     borderColor: "gray.900",
     fontWeight: "bold",
-    shadow: "xl",
     borderWidth: "3px",
   },
 }

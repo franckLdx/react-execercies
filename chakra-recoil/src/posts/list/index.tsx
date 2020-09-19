@@ -1,8 +1,11 @@
-import { Flex } from "@chakra-ui/core";
 import React, { FunctionComponent } from "react";
+import { Box, Flex } from "@chakra-ui/core";
 import { Loading } from "../../misc/Loading";
 import { useLoadPosts } from "../hooks";
 import { PostItem } from "./PostItems";
+import { ExtraBorder } from "../../misc/ExtraBorder";
+
+const horizontalSpaceBetweenItem = { base: 2, md: 2 }
 
 const Posts: FunctionComponent = () => {
   const postsModel = useLoadPosts();
@@ -12,9 +15,15 @@ const Posts: FunctionComponent = () => {
       return <Loading />;
     case 'loaded':
       return (
-        <Flex wrap="wrap" justifyContent="space-around" alignItems="center" justify-content="center">
-          {postsModel.posts.map((post) => <PostItem key={post.id} post={post} />)};
-        </Flex>
+        <ExtraBorder>
+          <Flex backgroundColor="blue.100" wrap="wrap" justifyContent="space-around" pb={{ ...horizontalSpaceBetweenItem }}>
+            {postsModel.posts.map((post) =>
+              <Box key={post.id} mt={{ ...horizontalSpaceBetweenItem }}>
+                <PostItem post={post} />
+              </Box>
+            )}
+          </Flex>
+        </ExtraBorder >
       );
     case 'error':
       throw postsModel.error;

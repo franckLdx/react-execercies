@@ -10,10 +10,11 @@ import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./Routing/LoadingProvider";
 import { RecoilRoot } from "recoil";
 
+
 const App: FunctionComponent = () => (
   <ThemeProvider theme={customTheme}>
-    <CSSReset />
     <ColorModeProvider>
+      <CSSReset />
       <ErrorBoundary>
         <RecoilRoot>
           <LoadingProvider>
