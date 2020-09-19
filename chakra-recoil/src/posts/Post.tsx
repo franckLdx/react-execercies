@@ -1,14 +1,18 @@
 import React, { FunctionComponent } from 'react';
 import { useParams } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { getPost } from './model';
 
 const Post: FunctionComponent = () => {
-  // We can use the `useParams` hook here to access
-  // the dynamic pieces of the URL.
   const { id } = useParams();
+  const post = useRecoilValue(getPost(Number(id)))
 
   return (
     <div>
-      <h3>ID: {id}</h3>
+      <h3>ID: {post?.id}</h3>
+      {post?.title}
+      {post?.body}
+      {post?.userId}
     </div>
   );
 }

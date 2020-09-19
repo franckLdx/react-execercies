@@ -6,26 +6,25 @@ import { Post } from "../model";
 import { UserInfo } from "./UserInfo";
 import { Link } from "react-router-dom";
 
-interface PostItemProps {
+type PostItemProps = {
   post: Post;
-}
+} & Pick<PseudoBoxProps, 'mt'>
 
-export const PostItem: FunctionComponent<PostItemProps> = ({ post }) => {
-  return (
-    <Link to={`posts/${post.id}`}>
-      <PseudoBox {...PostItemContainerProps}>
-        <Text h="5em">
-          {post.title}
-        </Text>
-        <Divider />
-        <UserInfo userId={post.userId} />
-      </PseudoBox>
-    </Link>
-  );
-};
+export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
+  <Link to={`posts/${post.id}`}>
+    <PseudoBox {...PostItemContainerProps} mt={mt}>
+      <Text h="5em">
+        {post.title}
+      </Text>
+      <Divider />
+      <UserInfo userId={post.userId} />
+    </PseudoBox>
+  </Link >
+);
+
 
 const PostItemContainerProps: PseudoBoxProps = {
-  w: "350px",
+  width: "350px",
   backgroundColor: "white",
   borderColor: "gray.600",
   borderWidth: "2px",
@@ -34,6 +33,7 @@ const PostItemContainerProps: PseudoBoxProps = {
   fontSize: "xl",
   fontWeight: "500",
   p: "2",
+  color: "blue.700",
   _hover: {
     borderColor: "gray.900",
     fontWeight: "bold",

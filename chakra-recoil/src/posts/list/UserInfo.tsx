@@ -10,7 +10,7 @@ interface UserInfoProps {
 export const UserInfo: FunctionComponent<UserInfoProps> = ({ userId }) => {
   const user = useRecoilValue(usersFamily(userId));
   return (
-    <Text textAlign="right">
+    <Text textAlign="right" color="blue.800">
       {user?.username}
     </Text>
   );

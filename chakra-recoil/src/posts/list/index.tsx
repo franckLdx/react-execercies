@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Box, Flex } from "@chakra-ui/core";
+import { Flex } from "@chakra-ui/core";
 import { Loading } from "../../misc/Loading";
 import { useLoadPosts } from "../hooks";
 import { PostItem } from "./PostItems";
@@ -18,9 +18,7 @@ const Posts: FunctionComponent = () => {
         <ExtraBorder>
           <Flex backgroundColor="blue.100" wrap="wrap" justifyContent="space-around" pb={{ ...horizontalSpaceBetweenItem }}>
             {postsModel.posts.map((post) =>
-              <Box key={post.id} mt={{ ...horizontalSpaceBetweenItem }}>
-                <PostItem post={post} />
-              </Box>
+              <PostItem key={post.id} post={post} mt={horizontalSpaceBetweenItem} />
             )}
           </Flex>
         </ExtraBorder >

@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom, selectorFamily } from "recoil";
 
 export interface Post {
   id: number;
@@ -7,7 +7,7 @@ export interface Post {
   userId: number;
 }
 
-export const noLoadPosts =
+export const noPostsYet =
 {
   state: 'none' as const,
   posts: [],
@@ -34,12 +34,20 @@ export const loadPostsError = (error: Error) => ({
 })
 
 export type PostsModel =
-  typeof noLoadPosts |
+  typeof noPostsYet |
   typeof loadingPosts |
   ReturnType<typeof loadedPosts> |
   ReturnType<typeof loadPostsError>;
 
 export const postsModelAtom = atom<PostsModel>({
   key: "posts",
-  default: noLoadPosts,
+  default: noPostsYet,
+});
+
+export const getPost = selectorFamily<Post | undefined, number>({
+  key: "getPost",
+  get: (id) => ({ get }) => {
+    const postModel = get(postsModelAtom);
+    return postModel.posts.find(post => post.id === id);
+  },
 });
