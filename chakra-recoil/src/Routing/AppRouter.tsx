@@ -8,7 +8,7 @@ export const AppRouter: FunctionComponent = () => (
   <BrowserRouter>
     <Switch>
       <Route exact={true} path="/about"><About /></Route>;
-      <Route exact={true} path="/posts"><Posts /></Route>;
+      <Route path="/posts"><Posts /></Route>;
       <Redirect
         to={{ pathname: "/posts" }} />
     </Switch>

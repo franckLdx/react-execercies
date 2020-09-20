@@ -1,7 +1,6 @@
 import { atom } from "recoil";
+import { LoadtingState } from "../../../models/loadingState";
 
-type LoadtingState = 'none' | 'loading' | 'loaded' | 'error';
+export const loadingStateAtom = atom<LoadtingState>({ key: "postsLoadingState", default: 'none' });
 
-export const loadingStateAtom = atom<LoadtingState>({ key: "loadingState", default: 'none' });
-
-export const loadingErrorAtom = atom<Error | undefined>({ key: "loadingError", default: undefined })
+export const loadingErrorAtom = atom<Error | undefined>({ key: "postsLoadingError", default: undefined })

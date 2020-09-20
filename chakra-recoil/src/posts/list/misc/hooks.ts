@@ -5,8 +5,8 @@ import { postsAtom } from "../../misc/model";
 import { loadingErrorAtom, loadingStateAtom } from "./model";
 
 export function useLoadPosts() {
-  const [loadingState, setLoadingState] = useRecoilState(loadingStateAtom);
   const [posts, setPosts] = useRecoilState(postsAtom);
+  const [loadingState, setLoadingState] = useRecoilState(loadingStateAtom);
   const [loadingError, setLoadingError] = useRecoilState(loadingErrorAtom);
 
   useEffect(() => {
