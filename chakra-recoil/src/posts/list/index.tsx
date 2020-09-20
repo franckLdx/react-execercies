@@ -1,15 +1,15 @@
 import React, { FunctionComponent } from "react";
 import { Flex } from "@chakra-ui/core";
 import { Loading } from "../../misc/Loading";
-import { useLoadPosts } from "../misc/hooks";
+import { useLoadPosts } from "./misc/hooks";
 import { PostItem } from "./PostItems";
 import { Page } from "../../misc/Page";
 
 const horizontalSpaceBetweenItem = { base: 2, md: 2 }
 
 const Posts: FunctionComponent = () => {
-  const postsModel = useLoadPosts();
-  switch (postsModel.state) {
+  const [posts, loadingState, loadingError] = useLoadPosts();
+  switch (loadingState) {
     case 'none':
     case 'loading':
       return <Loading />;
@@ -17,14 +17,14 @@ const Posts: FunctionComponent = () => {
       return (
         <Page>
           <Flex wrap="wrap" justifyContent="space-around" pb={{ ...horizontalSpaceBetweenItem }}>
-            {postsModel.posts.map((post) =>
+            {posts.map((post) =>
               <PostItem key={post.id} post={post} mt={horizontalSpaceBetweenItem} />
             )}
           </Flex>
         </Page >
       );
     case 'error':
-      throw postsModel.error;
+      throw loadingError;
   }
 };
 

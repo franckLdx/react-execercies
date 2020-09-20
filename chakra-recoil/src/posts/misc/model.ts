@@ -7,47 +7,17 @@ export interface Post {
   userId: number;
 }
 
-export const noPostsYet =
-{
-  state: 'none' as const,
-  posts: [],
-  error: null,
-}
+export type Posts = Post[];
 
-export const loadingPosts =
-{
-  state: 'loading' as const,
-  posts: [],
-  error: null,
-}
-
-export const loadedPosts = (posts: Post[]) => ({
-  state: 'loaded' as const,
-  posts,
-  error: null,
-});
-
-export const loadPostsError = (error: Error) => ({
-  state: 'error' as const,
-  posts: [],
-  error: error,
-})
-
-export type PostsModel =
-  typeof noPostsYet |
-  typeof loadingPosts |
-  ReturnType<typeof loadedPosts> |
-  ReturnType<typeof loadPostsError>;
-
-export const postsModelAtom = atom<PostsModel>({
+export const postsAtom = atom<Posts>({
   key: "posts",
-  default: noPostsYet,
+  default: [],
 });
 
 export const getPost = selectorFamily<Post | undefined, number>({
   key: "getPost",
   get: (id) => ({ get }) => {
-    const postModel = get(postsModelAtom);
-    return postModel.posts.find(post => post.id === id);
+    const posts = get(postsAtom);
+    return posts.find(post => post.id === id);
   },
 });
