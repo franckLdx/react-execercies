@@ -1,11 +1,11 @@
 import React, { FunctionComponent, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
-import { Page } from '../../misc/Page';
 import Text from "@chakra-ui/core/dist/Text";
 import { usersFamily } from '../../users/model';
 import { useLoadPost } from './misc/hooks';
 import { Loading } from '../../misc/Loading';
+import { Page } from '../../misc/Page';
 
 const Post: FunctionComponent = () => {
   const { id } = useParams();
@@ -16,8 +16,10 @@ const Post: FunctionComponent = () => {
     }
     return num;
   }, [id]);
+
   const [post, loadingState, loadingError] = useLoadPost(postId)
   const user = useRecoilValue(usersFamily(post?.userId));
+
   switch (loadingState) {
     case 'none':
     case 'loading':
@@ -29,8 +31,8 @@ const Post: FunctionComponent = () => {
           <Text fontSize="4xl">{post?.body}</Text>
           <Text fontSize="4xl"{...DividerProps} paddingBottom="20">{post?.body}</Text>
           <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
-        </Page >
-      );
+        </Page>
+      )
     case 'error':
       throw loadingError;
   }
