@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
 import Divider from "@chakra-ui/core/dist/Divider";
-import { Post } from "../model";
+import { Post } from "../misc/model";
 import { UserInfo } from "./UserInfo";
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ type PostItemProps = {
 export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
   <Link to={`posts/${post.id}`}>
     <PseudoBox {...PostItemContainerProps} mt={mt}>
-      <Text h="5em">
+      <Text height="5em">
         {post.title}
       </Text>
       <Divider />
@@ -33,7 +33,6 @@ const PostItemContainerProps: PseudoBoxProps = {
   fontSize: "xl",
   fontWeight: "500",
   p: "2",
-  color: "blue.700",
   _hover: {
     borderColor: "gray.900",
     fontWeight: "bold",

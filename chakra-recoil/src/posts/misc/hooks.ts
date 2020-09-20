@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { PostsApi } from "../api/posts";
+import { PostsApi } from "../../api/posts";
 import { loadedPosts, loadingPosts, loadPostsError, postsModelAtom } from "./model";
 
 export function useLoadPosts() {

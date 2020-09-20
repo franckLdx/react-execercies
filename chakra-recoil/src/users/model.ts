@@ -6,7 +6,7 @@ export interface User {
   username: string,
 }
 
-export const usersFamily = atomFamily<User | undefined, number>({
+export const usersFamily = atomFamily<User | undefined, number | undefined>({
   key: 'User',
   default: UserApi.get,
 });

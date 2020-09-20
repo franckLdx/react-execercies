@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { ExtraBorder } from "./ExtraBorder";
 import { Alert, AlertTitle, CircularProgress } from "@chakra-ui/core";
+import { Page } from "./Page";
 
 export const Loading: FunctionComponent = () => (
-  <ExtraBorder>
+  <Page>
     <Alert
       status="info"
       flexDirection="column"
@@ -15,5 +15,5 @@ export const Loading: FunctionComponent = () => (
       </AlertTitle>
       <CircularProgress my="6" isIndeterminate color="green"></CircularProgress>
     </Alert>
-  </ExtraBorder>
+  </Page>
 );
