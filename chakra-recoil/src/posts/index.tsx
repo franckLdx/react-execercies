@@ -10,7 +10,7 @@ const PostsRouter: FunctionComponent = () => (
       <Route exact={true} path="/posts/:id"><Post /></Route>;
       <Route exact={true} path="/posts"><Posts /></Route>;
       <Redirect
-        to={{ pathname: "/posts" }} />
+        to={{ pathname: "/" }} />
     </Switch>
   </BrowserRouter>
 );

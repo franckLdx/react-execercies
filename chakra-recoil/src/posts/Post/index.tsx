@@ -8,7 +8,7 @@ import { Loading } from '../../misc/Loading';
 import { Page } from '../../misc/Page';
 
 const Post: FunctionComponent = () => {
-  const { id } = useParams();
+  const { id } = useParams<any>();
   const postId = useMemo(() => {
     const num = Number(id);
     if (isNaN(num)) {
@@ -30,7 +30,9 @@ const Post: FunctionComponent = () => {
           <Text fontSize="6xl" {...DividerProps} marginBottom="8">{post?.title}</Text>
           <Text fontSize="4xl">{post?.body}</Text>
           <Text fontSize="4xl"{...DividerProps} paddingBottom="20">{post?.body}</Text>
-          <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
+          {user && (
+            <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
+          )}
         </Page>
       )
     case 'error':

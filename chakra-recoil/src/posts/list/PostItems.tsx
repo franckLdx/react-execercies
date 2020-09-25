@@ -11,7 +11,7 @@ type PostItemProps = {
 } & Pick<PseudoBoxProps, 'mt'>
 
 export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
-  <Link to={`posts/${post.id}`}>
+  <Link to={`/posts/${post.id}`}>
     <PseudoBox {...PostItemContainerProps} mt={mt}>
       <Text height="5em">
         {post.title}
