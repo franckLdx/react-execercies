@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import Text from "@chakra-ui/core/dist/Text";
-import { usersFamily } from '../../users/model';
+import { usersFamily } from '../../Users/model';
 import { useLoadPost } from './misc/hooks';
-import { Loading } from '../../misc/Loading';
-import { Page } from '../../misc/Page';
+import { Loading } from '../../../sharedComponents/misc/Loading';
+import { Page } from '../../../sharedComponents/misc/Page';
+import { Link, useParams } from 'react-router-dom';
 
-const Post: FunctionComponent = () => {
+export const Post: FunctionComponent = () => {
   const { id } = useParams<any>();
   const postId = useMemo(() => {
     const num = Number(id);
@@ -31,7 +31,9 @@ const Post: FunctionComponent = () => {
           <Text fontSize="4xl">{post?.body}</Text>
           <Text fontSize="4xl"{...DividerProps} paddingBottom="20">{post?.body}</Text>
           {user && (
-            <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
+            <Link to={`/users/${user.id}`}>
+              <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
+            </Link>
           )}
         </Page>
       )
@@ -41,5 +43,3 @@ const Post: FunctionComponent = () => {
 }
 
 const DividerProps = { borderBottomColor: "blue.700", borderBottomWidth: "2px" }
-
-export default Post;

@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { Flex } from "@chakra-ui/core";
-import { Loading } from "../../misc/Loading";
+import { Loading } from "../../../sharedComponents/misc/Loading";
 import { useLoadPosts } from "./misc/hooks";
 import { PostItem } from "./PostItems";
-import { Page } from "../../misc/Page";
+import { Page } from "../../../sharedComponents/misc/Page";
 
 const horizontalSpaceBetweenItem = { base: 2, md: 2 }
 
-const Posts: FunctionComponent = () => {
+export const Posts: FunctionComponent = () => {
   const [posts, loadingState, loadingError] = useLoadPosts();
   switch (loadingState) {
     case 'none':
@@ -28,4 +28,3 @@ const Posts: FunctionComponent = () => {
   }
 };
 
-export default Posts;

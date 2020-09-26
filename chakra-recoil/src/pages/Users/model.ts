@@ -1,5 +1,5 @@
 import { atomFamily } from "recoil";
-import { UserApi } from "../api/users";
+import { UserApi } from "../../api/users";
 
 export interface User {
   id: number,

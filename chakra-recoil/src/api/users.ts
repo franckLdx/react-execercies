@@ -1,4 +1,4 @@
-import { User } from "../users/model";
+import { User } from "../pages/Users/model";
 import { get } from "./misc";
 
 export const UserApi = {

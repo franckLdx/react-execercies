@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useRecoilState } from "recoil";
-import { PostsApi } from "../../../api/posts";
+import { PostsApi } from "../../../../api/posts";
 import { postsAtom } from "../../misc/model";
 import { loadingErrorAtom, loadingStateAtom } from "./model";
 

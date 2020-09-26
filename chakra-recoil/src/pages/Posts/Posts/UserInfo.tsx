@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import Text from "@chakra-ui/core/dist/Text";
 import { useRecoilValue } from "recoil";
-import { usersFamily } from "../../users/model";
+import { usersFamily } from "../../Users/model";
 
 interface UserInfoProps {
   userId: number;

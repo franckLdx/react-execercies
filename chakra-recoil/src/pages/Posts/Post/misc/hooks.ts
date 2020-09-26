@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRecoilState, useResetRecoilState } from "recoil";
-import { PostsApi } from "../../../api/posts";
-import { loadingErrorAtom, loadingStateAtom } from "../../List/misc/model";
+import { PostsApi } from "../../../../api/posts";
+import { loadingErrorAtom, loadingStateAtom } from "../../Posts/misc/model";
 import { getPost } from "../../misc/model";
 
 export const useLoadPost = (id: number) => {

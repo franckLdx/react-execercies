@@ -4,7 +4,7 @@ import Text from "@chakra-ui/core/dist/Text";
 import Divider from "@chakra-ui/core/dist/Divider";
 import { Post } from "../misc/model";
 import { UserInfo } from "./UserInfo";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom'
 
 type PostItemProps = {
   post: Post;

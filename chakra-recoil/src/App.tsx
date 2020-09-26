@@ -4,10 +4,10 @@ import {
   CSSReset,
   ColorModeProvider,
 } from "@chakra-ui/core";
-import { AppRouter } from "./Routing/AppRouter";
-import { ErrorBoundary } from "./Error/ErrorBoudary";
+import { AppRouter } from "./Routes/AppRouter";
+import { ErrorBoundary } from "./sharedComponents/error/ErrorBoudary";
 import { customTheme } from "./customTheme";
-import { LoadingProvider } from "./Routing/LoadingProvider";
+import { LoadingProvider } from "./sharedComponents/LoadingProvider";
 import { RecoilRoot } from "recoil";
 
 
