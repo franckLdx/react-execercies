@@ -5,7 +5,7 @@ import {
   ColorModeProvider,
 } from "@chakra-ui/core";
 import { AppRouter } from "./Routes/AppRouter";
-import { ErrorBoundary } from "./sharedComponents/error/ErrorBoudary";
+import { ErrorBoundary } from "./sharedComponents/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./sharedComponents/LoadingProvider";
 import { RecoilRoot } from "recoil";

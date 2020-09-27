@@ -1,8 +1,12 @@
 import { FunctionComponent } from "react";
 import React from 'react';
-import { useParams } from "react-router-dom";
+import { useParamId } from "../../../sharedHooks/hooks";
+import { useRecoilValue } from "recoil";
+import { usersFamily } from "../../../models/users/model";
 
 export const User: FunctionComponent = () => {
-  const { id } = useParams<any>();
-  return <>User {id}</>
+  const userId = useParamId();
+  const user = useRecoilValue(usersFamily(userId));
+
+  return <>User {user?.username}</>
 }

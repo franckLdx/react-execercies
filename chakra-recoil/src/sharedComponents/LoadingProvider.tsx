@@ -1,5 +1,5 @@
 import React, { FunctionComponent, Suspense } from "react";
-import { Loading } from "./misc/Loading";
+import { Loading } from "./Loading";
 
 export const LoadingProvider: FunctionComponent = ({ children }) =>
   <Suspense fallback={<Loading />}>

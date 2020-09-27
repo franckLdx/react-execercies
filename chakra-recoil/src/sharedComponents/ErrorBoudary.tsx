@@ -1,5 +1,5 @@
 import React from "react";
-import { ShitHappens } from "./ShitHappens";
+import { ShitHappens } from "../pages/ShitHappens";
 
 interface ErrorBoundaryStrate {
   hasError: boolean;

@@ -1,6 +1,6 @@
 import { Box } from '@chakra-ui/core';
 import React, { FunctionComponent } from 'react';
-import { ExtraBorder } from './ExtraBorder';
+import { ExtraBorder } from '../sharedComponents/ExtraBorder';
 
 export const Page: FunctionComponent = ({ children }) => (
   <ExtraBorder>

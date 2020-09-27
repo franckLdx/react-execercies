@@ -6,10 +6,10 @@ import {
   AlertDescription,
   Text,
 } from "@chakra-ui/core";
-import { ExtraBorder } from "../misc/ExtraBorder";
+import { Page } from "../sharedPages/Page";
 
 export const ShitHappens: FunctionComponent = () => (
-  <ExtraBorder>
+  <Page>
     <Alert
       status="error"
       flexDirection="column"
@@ -23,5 +23,5 @@ export const ShitHappens: FunctionComponent = () => (
         <Text mt="2">You should relod the app.</Text>
       </AlertDescription>
     </Alert>
-  </ExtraBorder>
+  </Page>
 );

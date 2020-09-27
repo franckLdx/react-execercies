@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Page } from "../sharedComponents/misc/Page";
+import { Page } from "../sharedPages/Page";
 
 const About: FunctionComponent = () => (
   <Page>
