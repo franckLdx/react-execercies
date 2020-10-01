@@ -1,5 +1,5 @@
 import { atom, selector } from "recoil";
-import { LoadtingState } from "../loadingState";
+import { LoadingState } from "../loadingState";
 
 export interface Post {
   id: number;
@@ -15,7 +15,7 @@ export const postsAtom = atom<Posts>({
   default: [],
 });
 
-export const loadingStateAtom = atom<LoadtingState>({ key: "postsLoadingState", default: 'none' });
+export const loadingStateAtom = atom<LoadingState>({ key: "postsLoadingState", default: 'none' });
 
 export const loadingErrorAtom = atom<Error | undefined>({ key: "postsLoadingError", default: undefined })
 

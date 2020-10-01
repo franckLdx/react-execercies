@@ -1,8 +1,30 @@
 import { useEffect } from "react";
 import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { filteredPosts, loadingErrorAtom, loadingStateAtom, postsAtom } from "./model";
+import { LoadingState } from "../loadingState";
+import { filteredPosts, loadingErrorAtom, loadingStateAtom, Posts, postsAtom } from "./model";
 import { getPost } from "./selectors";
+
+interface LoadPostsProps {
+  loadingState: LoadingState,
+  setLoadingState: (loadingState: LoadingState) => void,
+  setPosts: (posts: Posts) => void
+  setLoadingError: (error: Error) => void
+}
+export async function loadPosts(force: boolean, { loadingState, setLoadingState, setPosts, setLoadingError }: LoadPostsProps) {
+  if (loadingState !== 'none' && !force) {
+    return
+  }
+  try {
+    setLoadingState('loading');
+    const receivedPosts = await PostsApi.getAll();
+    setLoadingState('loaded');
+    setPosts(receivedPosts);
+  } catch (error) {
+    setLoadingState('error');
+    setLoadingError(error);
+  }
+}
 
 export function useLoadPosts() {
   const setPosts = useSetRecoilState(postsAtom);
@@ -11,19 +33,7 @@ export function useLoadPosts() {
   const [loadingError, setLoadingError] = useRecoilState(loadingErrorAtom);
 
   useEffect(() => {
-    if (loadingState !== 'none') {
-      return
-    }
-    setLoadingState('loading');
-    PostsApi.getAll()
-      .then(receivedPosts => {
-        setLoadingState('loaded');
-        setPosts(receivedPosts);
-      })
-      .catch(error => {
-        setLoadingState('error');
-        setLoadingError(error);
-      });
+    loadPosts(false, { loadingState, setLoadingState, setPosts, setLoadingError })
   }, [loadingState, setLoadingError, setLoadingState, setPosts]);
 
   return [posts, loadingState, loadingError] as const;

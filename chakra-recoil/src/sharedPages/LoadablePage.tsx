@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useMemo } from 'react';
-import { LoadtingState } from '../models/loadingState';
+import { LoadingState } from '../models/loadingState';
 import { Loading } from '../sharedComponents/Loading';
 import { Page } from './Page';
 
 interface LoadableProps {
-  loadingState: LoadtingState;
+  loadingState: LoadingState;
   loadingError: Error | undefined
 }
 
