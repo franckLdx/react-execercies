@@ -13,7 +13,7 @@ type PostItemProps = {
 export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
   <Link to={`/posts/${post.id}`}>
     <PseudoBox {...PostItemContainerProps} mt={mt}>
-      <Text height="5em">
+      <Text minHeight="5em">
         {post.title}
       </Text>
       <Divider />
@@ -24,7 +24,6 @@ export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
 
 
 const PostItemContainerProps: PseudoBoxProps = {
-  width: "350px",
   backgroundColor: "white",
   borderColor: "gray.600",
   borderWidth: "2px",
