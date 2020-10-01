@@ -3,7 +3,7 @@ import { Page } from "../sharedPages/Page";
 
 const About: FunctionComponent = () => (
   <Page>
-    An excercise that aims to use chakra ui & recoil
+    An excercise that aims to use Chakra UI & Recoil
   </Page>
 );
 

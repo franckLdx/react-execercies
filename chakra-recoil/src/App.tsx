@@ -4,7 +4,7 @@ import {
   CSSReset,
   ColorModeProvider,
 } from "@chakra-ui/core";
-import { AppRouter } from "./Routes/AppRouter";
+import { AppRouter } from "./routes/AppRouter";
 import { ErrorBoundary } from "./sharedComponents/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./sharedComponents/LoadingProvider";

@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
+import { Link } from 'react-router-dom'
 import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
-import Divider from "@chakra-ui/core/dist/Divider";
 import { UserInfo } from "./UserInfo";
-import { Link } from 'react-router-dom'
 import { Post } from "../../../state/post";
+import { AppDivider } from "../../../sharedComponents/AppDivider";
 
 type PostItemProps = {
   post: Post;
@@ -13,10 +13,10 @@ type PostItemProps = {
 export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
   <Link to={`/posts/${post.id}`}>
     <PseudoBox {...PostItemContainerProps} mt={mt}>
-      <Text minHeight="5em">
+      <Text minHeight="app.itemContainer.minHeight">
         {post.title}
       </Text>
-      <Divider />
+      <AppDivider />
       <UserInfo userId={post.userId} />
     </PseudoBox>
   </Link >
@@ -24,17 +24,15 @@ export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
 
 
 const PostItemContainerProps: PseudoBoxProps = {
-  backgroundColor: "white",
-  borderColor: "gray.600",
-  borderWidth: "2px",
-  rounded: "lg",
-  shadow: "xl",
-  fontSize: "xl",
-  fontWeight: "500",
+  backgroundColor: "app.secondaryBackgroundColor",
+  rounded: "app.normal",
+  fontSize: "app.normal",
+  fontWeight: "app.medium",
   p: "2",
   _hover: {
-    borderColor: "gray.900",
-    fontWeight: "bold",
+    borderColor: "app.selectedBorderColor",
+    fontWeight: "app.bold",
     borderWidth: "3px",
+    shadow: "app.medium",
   },
 }

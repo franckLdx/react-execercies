@@ -4,7 +4,7 @@ import { ExtraBorder } from '../sharedComponents/ExtraBorder';
 
 export const Page: FunctionComponent = ({ children }) => (
   <ExtraBorder>
-    <Box backgroundColor="blue.100" fontWeight="500" color="blue.700">
+    <Box backgroundColor="app.mainBackgroundColor" fontWeight="app.normal" color="app.mainColor">
       {children}
     </Box>
   </ExtraBorder>

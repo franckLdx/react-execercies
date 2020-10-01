@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from "react";
-import { Text } from "@chakra-ui/core/dist/";
+import { Heading, Text } from "@chakra-ui/core/dist/";
+import { AppDivider } from "./AppDivider";
 
 interface CardProps {
   title: string | ReactNode;
@@ -9,10 +10,10 @@ interface CardProps {
 
 export const Card: FunctionComponent<CardProps> = ({ title, body, footer }) => (
   <>
-    <Text fontSize="6xl" {...DividerProps} marginBottom="8">{title}</Text>
-    <Text fontSize="4xl"{...DividerProps} paddingBottom="20">{body}</Text>
+    <Heading fontSize="5xl" >{title}</Heading>
+    <AppDivider marginBottom="8" />
+    <Text fontSize="4xl">{body}</Text>
+    <AppDivider marginTop="8" />
     <Text fontSize="4xl" textAlign="right">{footer}</Text>
   </>
 );
-
-const DividerProps = { borderBottomColor: "blue.700", borderBottomWidth: "2px" }

@@ -22,7 +22,7 @@ export const Post: FunctionComponent = () => {
         footer={
           user && (
             <Link to={`/users/${user.id}`}>
-              <Text fontSize="4xl" textAlign="right">{user?.username}</Text>
+              <Text textAlign="right">{user?.username}</Text>
             </Link>
           )
         }

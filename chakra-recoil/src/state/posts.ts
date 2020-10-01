@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { atom, selector, useRecoilState } from "recoil";
+import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { PostsApi } from "../api/posts";
 import { LoadingState } from "./loadingState";
 import { Post } from "./post";
@@ -47,7 +47,8 @@ export async function loadPosts(force: boolean, { setPosts, metaData, setMetaDat
 }
 
 export function useLoadPosts() {
-  const [posts, setPosts] = useRecoilState(postsAtom);
+  const setPosts = useSetRecoilState(postsAtom);
+  const posts = useRecoilValue(filteredPosts);
   const [metaData, setMetaData] = useRecoilState(postsMetaDataAtom);
 
   useEffect(() => {
