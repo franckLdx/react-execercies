@@ -3,8 +3,7 @@ import React from 'react';
 import { ExtraBorder } from "../../../sharedComponents/ExtraBorder";
 import { Box, Button, Icon, Input } from "@chakra-ui/core";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { filterPosts, loadingErrorAtom, loadingStateAtom, postsAtom } from "../../../models/posts/model";
-import { loadPosts } from "../../../models/posts/hooks";
+import { filterPosts, loadPosts, postsAtom, postsMetaDataAtom } from "../../../state/posts";
 
 export const PostsHeader: FunctionComponent = () => {
   return (
@@ -27,12 +26,11 @@ export const Filter: FunctionComponent = () => {
 
 export const Reload: FunctionComponent = () => {
   const setPosts = useSetRecoilState(postsAtom);
-  const [loadingState, setLoadingState] = useRecoilState(loadingStateAtom);
-  const setLoadingError = useSetRecoilState(loadingErrorAtom);
+  const [metaData, setMetaData] = useRecoilState(postsMetaDataAtom);
 
   const reload = useCallback(
-    () => loadPosts(true, { loadingState, setLoadingState, setPosts, setLoadingError }),
-    [loadingState, setLoadingError, setLoadingState, setPosts]
+    () => loadPosts(true, { setPosts, metaData, setMetaData }),
+    [metaData, setMetaData, setPosts]
   );
 
   return (

@@ -1,4 +1,4 @@
-import { User } from "../models/users/model";
+import { User } from "../state/user";
 import { get } from "./misc";
 
 export const UserApi = {

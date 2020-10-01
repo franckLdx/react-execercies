@@ -1,4 +1,4 @@
-import { Post } from "../models/posts/model";
+import { Post } from "../state/post";
 import { get } from "./misc";
 
 export const PostsApi = {

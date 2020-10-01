@@ -1,6 +1,6 @@
-import React, { FunctionComponent, useMemo } from 'react';
-import { LoadingState } from '../models/loadingState';
-import { Loading } from '../sharedComponents/Loading';
+import React, { FunctionComponent } from 'react';
+import { LoadingState } from '../state/loadingState';
+import { LoadableComponent } from '../sharedComponents/LoadableComponent';
 import { Page } from './Page';
 
 interface LoadableProps {
@@ -8,22 +8,10 @@ interface LoadableProps {
   loadingError: Error | undefined
 }
 
-export const LoadablePage: FunctionComponent<LoadableProps> = ({ loadingState, loadingError, children }) => {
-  const Component = useMemo(() => {
-    switch (loadingState) {
-      case 'none':
-      case 'loading':
-        return <Loading />;
-      case 'loaded':
-        return children;
-      case 'error':
-        throw loadingError;
-    }
-  }, [children, loadingError, loadingState]);
-
+export const LoadablePage: FunctionComponent<LoadableProps> = ({ children, ...props }) => {
   return (
     <Page>
-      {Component}
+      <LoadableComponent {...props} >{children}</LoadableComponent>
     </Page>
   )
 }

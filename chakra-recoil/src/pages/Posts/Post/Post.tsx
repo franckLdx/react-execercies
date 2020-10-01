@@ -1,21 +1,21 @@
 import React, { FunctionComponent } from 'react';
 import { useRecoilValue } from 'recoil';
 import Text from "@chakra-ui/core/dist/Text";
-import { usersFamily } from '../../../models/users/model';
+import { usersFamily } from '../../../state/user';
 import { Link } from 'react-router-dom';
 import { useParamId } from '../../../sharedHooks/hooks';
 import { LoadablePage } from '../../../sharedPages/LoadablePage';
-import { useLoadPost } from '../../../models/posts/hooks';
 import { Card } from '../../../sharedComponents/Card';
+import { useLoadPost } from '../../../state/post';
 
 export const Post: FunctionComponent = () => {
   const postId = useParamId();
 
-  const [post, loadingState, loadingError] = useLoadPost(postId)
+  const [post, metaData] = useLoadPost(postId)
   const user = useRecoilValue(usersFamily(post?.userId));
 
   return (
-    <LoadablePage loadingState={loadingState} loadingError={loadingError}>
+    <LoadablePage loadingState={metaData.loadingState} loadingError={metaData.error}>
       <Card
         title={post?.title}
         body={post?.body}
