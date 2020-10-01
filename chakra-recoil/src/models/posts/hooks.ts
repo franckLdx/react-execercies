@@ -1,11 +1,12 @@
 import { useEffect } from "react";
-import { useRecoilState, useResetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useResetRecoilState, useSetRecoilState } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { loadingErrorAtom, loadingStateAtom, postsAtom } from "./model";
+import { filteredPosts, loadingErrorAtom, loadingStateAtom, postsAtom } from "./model";
 import { getPost } from "./selectors";
 
 export function useLoadPosts() {
-  const [posts, setPosts] = useRecoilState(postsAtom);
+  const setPosts = useSetRecoilState(postsAtom);
+  const posts = useRecoilValue(filteredPosts);
   const [loadingState, setLoadingState] = useRecoilState(loadingStateAtom);
   const [loadingError, setLoadingError] = useRecoilState(loadingErrorAtom);
 

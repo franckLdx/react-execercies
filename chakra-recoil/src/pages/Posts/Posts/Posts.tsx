@@ -3,11 +3,13 @@ import { SimpleGrid } from "@chakra-ui/core";
 import { useLoadPosts } from "../../../models/posts/hooks";
 import { PostItem } from "./PostItems";
 import { LoadablePage } from "../../../sharedPages/LoadablePage";
+import { PostsHeader } from "./PostsHeader";
 
 export const Posts: FunctionComponent = () => {
   const [posts, loadingState, loadingError] = useLoadPosts();
   return (
     <LoadablePage loadingState={loadingState} loadingError={loadingError}>
+      <PostsHeader />
       <SimpleGrid columns={[1, 2, 3, 4]} spacing={[5, 8]} padding={5}>
         {posts.map((post) =>
           <PostItem key={post.id} post={post} />
