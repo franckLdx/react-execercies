@@ -14,10 +14,12 @@ export const User: FunctionComponent = () => {
     <Page>
       <Card
         title={user?.username}
-        body={<>
-          <Text>Name: {user?.name}</Text>
-          <Text>Email: {user?.email}</Text>
-        </>}
+        body={
+          <>
+            <Text>Name: {user?.name}</Text>
+            <Text>Email: {user?.email}</Text>
+          </>
+        }
       />
     </Page>
   );
