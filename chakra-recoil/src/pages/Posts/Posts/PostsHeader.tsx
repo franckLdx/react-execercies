@@ -1,20 +1,17 @@
-import { ChangeEvent, FunctionComponent, useCallback } from "react";
-import React from 'react';
+import React, { ChangeEvent, FunctionComponent, memo, useCallback } from "react";
 import { ExtraBorder } from "../../../sharedComponents/ExtraBorder";
 import { Box, Button, Icon, Input } from "@chakra-ui/core";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { filterPosts, loadPosts, postsAtom, postsMetaDataAtom } from "../../../state/posts";
 
-export const PostsHeader: FunctionComponent = () => {
-  return (
-    <ExtraBorder >
-      <Box display="flex">
-        <Reload />
-        <Filter />
-      </Box>
-    </ExtraBorder>
-  );
-};
+export const PostsHeader: FunctionComponent = memo(() => (
+  <ExtraBorder >
+    <Box display="flex">
+      <Reload />
+      <Filter />
+    </Box>
+  </ExtraBorder>
+));
 
 export const Filter: FunctionComponent = () => {
   const [filter, setFilter] = useRecoilState(filterPosts);

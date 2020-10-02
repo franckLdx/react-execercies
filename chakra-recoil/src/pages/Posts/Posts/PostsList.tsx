@@ -6,7 +6,7 @@ import { LoadableComponent } from "../../../sharedComponents/LoadableComponent";
 import { Page } from "../../../sharedPages/Page";
 import { useLoadPosts } from "../../../state/posts";
 
-export const Posts: FunctionComponent = () => {
+export const PostsList: FunctionComponent = () => {
   const [posts, metaData] = useLoadPosts();
   return (
     <Page>

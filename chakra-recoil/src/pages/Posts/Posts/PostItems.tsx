@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, memo } from "react";
 import { Link } from 'react-router-dom'
 import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
@@ -10,7 +10,7 @@ type PostItemProps = {
   post: Post;
 } & Pick<PseudoBoxProps, 'mt'>
 
-export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
+export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) => (
   <Link to={`/posts/${post.id}`}>
     <PseudoBox {...PostItemContainerProps} mt={mt}>
       <Text minHeight="app.itemContainer.minHeight">
@@ -20,7 +20,7 @@ export const PostItem: FunctionComponent<PostItemProps> = ({ post, mt }) => (
       <UserInfo userId={post.userId} />
     </PseudoBox>
   </Link >
-);
+));
 
 
 const PostItemContainerProps: PseudoBoxProps = {
