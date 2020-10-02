@@ -6,10 +6,7 @@ export const UserApi = {
     if (userId === undefined) {
       return undefined;
     }
-    const response = await get(`users/${userId}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load user ${userId}: ${response.status}/${response.statusText}`);
-    }
-    return await response.json();
+    const url = `users/${userId}`;
+    return await get(url, `Failed to load user ${userId}`);
   }
 }

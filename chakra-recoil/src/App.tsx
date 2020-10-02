@@ -1,14 +1,12 @@
 import React, { FunctionComponent } from "react";
-import {
-  ThemeProvider,
-  CSSReset,
-  ColorModeProvider,
-} from "@chakra-ui/core";
 import { AppRouter } from "./routes/AppRouter";
 import { ErrorBoundary } from "./sharedComponents/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./sharedComponents/LoadingProvider";
 import { RecoilRoot } from "recoil";
+import ThemeProvider from "@chakra-ui/core/dist/ThemeProvider";
+import ColorModeProvider from "@chakra-ui/core/dist/ColorModeProvider";
+import CSSReset from "@chakra-ui/core/dist/CSSReset";
 
 
 const App: FunctionComponent = () => (

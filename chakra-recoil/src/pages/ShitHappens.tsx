@@ -1,11 +1,6 @@
 import React, { FunctionComponent } from "react";
-import {
-  Alert,
-  AlertIcon,
-  AlertTitle,
-  AlertDescription,
-  Text,
-} from "@chakra-ui/core";
+import { Alert, AlertDescription, AlertIcon, AlertTitle } from "@chakra-ui/core/dist/Alert";
+import Text from "@chakra-ui/core/dist/Text";
 import { Page } from "../sharedPages/Page";
 
 export const ShitHappens: FunctionComponent = () => (

@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { atom, selectorFamily, useRecoilState } from "recoil";
 import { PostsApi } from "../api/posts";
+import { Comment } from "./comment";
 import { LoadingState } from "./loadingState";
 import { postsAtom } from "./posts";
 
@@ -9,6 +10,7 @@ export interface Post {
   title: string;
   body: string;
   userId: number;
+  comments?: Comment[];
 }
 
 export interface PostMetadata {
@@ -54,6 +56,10 @@ export const getPost = selectorFamily<Post | undefined, number>({
       return;
     }
     const posts = get(postsAtom);
-    set(postsAtom, [...posts, post as Post]);
+    const updated = [
+      ...posts.filter(current => (post as Post).id !== current.id),
+      post
+    ] as Post[];
+    set(postsAtom, updated);
   }
 });

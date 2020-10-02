@@ -7,11 +7,13 @@ import { useParamId } from '../../../sharedHooks/hooks';
 import { LoadablePage } from '../../../sharedPages/LoadablePage';
 import { Card } from '../../../sharedComponents/Card';
 import { useLoadPost } from '../../../state/post';
+import { Comments } from './Comments';
 
 export const Post: FunctionComponent = () => {
   const postId = useParamId();
 
-  const [post, metaData] = useLoadPost(postId)
+  const [post, metaData] = useLoadPost(postId);
+
   const user = useRecoilValue(usersFamily(post?.userId));
 
   return (
@@ -27,6 +29,7 @@ export const Post: FunctionComponent = () => {
           )
         }
       />
+      <Comments postId={postId} />
     </LoadablePage>
   );
 }

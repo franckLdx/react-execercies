@@ -1,5 +1,6 @@
+import { Alert, AlertTitle } from "@chakra-ui/core/dist/Alert";
+import CircularProgress from "@chakra-ui/core/dist/CircularProgress";
 import React, { FunctionComponent } from "react";
-import { Alert, AlertTitle, CircularProgress } from "@chakra-ui/core";
 
 export const Loading: FunctionComponent = () => (
   <Alert

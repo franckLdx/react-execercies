@@ -27,7 +27,7 @@ export const postsMetaDataAtom = atom<PostsMetadata>({
 });
 
 interface LoadPostsProps {
-  setPosts: (posts: Posts) => void
+  setPosts: (posts: Posts) => void,
   metaData: PostsMetadata,
   setMetaData: (metaData: PostsMetadata) => void,
 }
@@ -51,9 +51,10 @@ export function useLoadPosts() {
   const posts = useRecoilValue(filteredPosts);
   const [metaData, setMetaData] = useRecoilState(postsMetaDataAtom);
 
-  useEffect(() => {
-    loadPosts(false, { setPosts, metaData, setMetaData })
-  }, [metaData, setMetaData, setPosts]);
+  useEffect(
+    () => { loadPosts(false, { setPosts, metaData, setMetaData }) },
+    [metaData, setMetaData, setPosts]
+  );
 
   return [posts, metaData] as const;
 }

@@ -1,9 +1,13 @@
 import React, { ChangeEvent, FunctionComponent, memo, useCallback } from "react";
 import { ExtraBorder } from "../../../sharedComponents/ExtraBorder";
-import { Box, BoxProps, Button, Icon, Input, Text } from "@chakra-ui/core";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { filterPosts, loadPosts, postsAtom, postsMetaDataAtom } from "../../../state/posts";
 import { format } from "date-fns";
+import Box, { BoxProps } from "@chakra-ui/core/dist/Box";
+import Text from "@chakra-ui/core/dist/Text";
+import Button from "@chakra-ui/core/dist/Button";
+import Input from "@chakra-ui/core/dist/Input";
+import Icon from "@chakra-ui/core/dist/Icon";
 
 export const PostsHeader: FunctionComponent = memo(() => (
   <ExtraBorder >

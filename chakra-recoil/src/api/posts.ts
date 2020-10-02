@@ -1,19 +1,19 @@
+import { Comment } from "../state/comment";
 import { Post } from "../state/post";
 import { get } from "./misc";
 
 export const PostsApi = {
   async getAll(): Promise<Post[]> {
-    const response = await get("posts");
-    if (!response.ok) {
-      throw new Error(`Failed to load posts: ${response.status}/${response.statusText}`);
-    }
-    return await response.json();
+    return await get("posts", `Failed to load posts`);
   },
   async get(postId: number): Promise<Post> {
-    const response = await get(`posts/${postId}`);
-    if (!response.ok) {
-      throw new Error(`Failed to load post ${postId}: ${response.status}/${response.statusText}`);
-    }
-    return await response.json();
+    const url = getPostUrl(postId);
+    return await get(url, `Failed to load post ${postId}`);
   },
+  async getComments(postId: number): Promise<Comment[]> {
+    const url = `${getPostUrl(postId)}/comments`;
+    return await get(url, `Failed to load post comments of post ${postId}`);
+  }
 };
+
+const getPostUrl = (postId: number) => `posts/${postId}`;
