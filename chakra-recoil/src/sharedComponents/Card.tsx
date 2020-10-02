@@ -10,7 +10,7 @@ interface CardProps {
 
 export const Card: FunctionComponent<CardProps> = ({ title, body, footer }) => (
   <>
-    <Heading fontSize="5xl" >{title}</Heading>
+    <Heading fontSize="5xl">{title}</Heading>
     <AppDivider marginBottom="8" />
     <Text fontSize="4xl">{body}</Text>
     <AppDivider marginTop="8" />

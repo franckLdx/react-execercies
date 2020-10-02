@@ -6,11 +6,11 @@ export const customTheme = {
   colors: {
     ...theme.colors,
     app: {
-      mainColor: theme.colors.blue[700],
-      secondaryColor: theme.colors.blue[800],
-      mainBackgroundColor: theme.colors.blue[100],
-      secondaryBackgroundColor: theme.colors.white,
-      selectedBorderColor: theme.colors.blue[200],
+      main: theme.colors.blue[700],
+      secondary: theme.colors.blue[800],
+      mainBackground: theme.colors.blue[100],
+      secondaryBackground: theme.colors.white,
+      mainBorder: "black",
       progress: "green",
       divider: theme.colors.blue[700],
     },

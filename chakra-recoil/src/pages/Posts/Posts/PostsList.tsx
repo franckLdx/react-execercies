@@ -12,7 +12,7 @@ export const PostsList: FunctionComponent = () => {
     <Page>
       <PostsHeader />
       <LoadableComponent loadingState={metaData.loadingState} loadingError={metaData.error}>
-        <SimpleGrid columns={[1, 2, 3, 4]} spacing={[5, 8]} padding={5}>
+        <SimpleGrid as="section" columns={[1, 2, 3, 4]} spacing={[5, 8]} padding={5}>
           {posts.map((post) =>
             <PostItem key={post.id} post={post} />
           )}

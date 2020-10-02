@@ -8,11 +8,11 @@ import { AppDivider } from "../../../sharedComponents/AppDivider";
 
 type PostItemProps = {
   post: Post;
-} & Pick<PseudoBoxProps, 'mt'>
+} & Pick<PseudoBoxProps, 'mt' | 'marginTop'>
 
 export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) => (
   <Link to={`/posts/${post.id}`}>
-    <PseudoBox {...PostItemContainerProps} mt={mt}>
+    <PseudoBox as="article" {...PostItemContainerProps} mt={mt}>
       <Text minHeight="app.itemContainer.minHeight">
         {post.title}
       </Text>
@@ -24,15 +24,16 @@ export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) =>
 
 
 const PostItemContainerProps: PseudoBoxProps = {
-  backgroundColor: "app.secondaryBackgroundColor",
+  backgroundColor: "app.secondaryBackground",
   rounded: "app.normal",
   fontSize: "app.normal",
   fontWeight: "app.medium",
   p: "2",
   _hover: {
-    borderColor: "app.selectedBorderColor",
+    borderColor: "app.mainBorder",
+    borderWidth: "1px",
+    padding: "-1px",
     fontWeight: "app.bold",
-    borderWidth: "3px",
     shadow: "app.medium",
   },
 }
