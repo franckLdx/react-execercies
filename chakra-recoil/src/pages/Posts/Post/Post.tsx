@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useRecoilValue } from 'recoil';
 import Text from "@chakra-ui/core/dist/Text";
-import { usersFamily } from '../../../state/user';
+import { usersAtom } from '../../../state/user';
 import { Link } from 'react-router-dom';
 import { useParamId } from '../../../sharedHooks/hooks';
 import { LoadablePage } from '../../../sharedPages/LoadablePage';
@@ -14,7 +14,7 @@ export const Post: FunctionComponent = () => {
 
   const [post, metaData] = useLoadPost(postId);
 
-  const user = useRecoilValue(usersFamily(post?.userId));
+  const user = useRecoilValue(usersAtom(post?.userId));
 
   return (
     <LoadablePage loadingState={metaData.loadingState} loadingError={metaData.error}>

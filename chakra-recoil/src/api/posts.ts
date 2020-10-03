@@ -1,6 +1,14 @@
-import { Comment } from "../state/comment";
 import { Post } from "../state/post";
 import { get } from "./misc";
+
+interface CommentPayload {
+  postId: number,
+  id: number,
+  name: string,
+  email: string,
+  body: string,
+}
+
 
 export const PostsApi = {
   async getAll(): Promise<Post[]> {
@@ -10,7 +18,7 @@ export const PostsApi = {
     const url = getPostUrl(postId);
     return await get(url, `Failed to load post ${postId}`);
   },
-  async getComments(postId: number): Promise<Comment[]> {
+  async getComments(postId: number): Promise<CommentPayload[]> {
     const url = `${getPostUrl(postId)}/comments`;
     return await get(url, `Failed to load post comments of post ${postId}`);
   }

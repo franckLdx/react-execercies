@@ -1,37 +1,53 @@
-import React, { FunctionComponent } from 'react';
+import React, { ChangeEvent, FunctionComponent, useCallback } from 'react';
 import { ExtraBorder } from '../../../sharedComponents/ExtraBorder';
+import { Comment, commentsAtom } from '../../../state/comment';
 import Text from "@chakra-ui/core/dist/Text";
-import { useLoadComments, Comment } from '../../../state/comment';
-import PseudoBox from '@chakra-ui/core/dist/PseudoBox';
 import { AppDivider } from '../../../sharedComponents/AppDivider';
+import Input from '@chakra-ui/core/dist/Input';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 interface CommentsProps {
   postId: number;
 }
 
 export const Comments: FunctionComponent<CommentsProps> = ({ postId }) => {
-  const [comments, loading] = useLoadComments(postId);
+  const comments = useRecoilValue(commentsAtom(postId));
   return (
     <ExtraBorder>
       <Text color="app.main" fontSize="3xl" fontWeight="app.bold"> Comments:</Text>
       {
-        comments?.map(comment => <CommentItem key={comment.id} comment={comment} />)
+        comments?.map(comment => <CommentItem key={comment.id} postId={postId} comment={comment} />)
       }
-      {loading === 'loading' ? "Please wait" : ""}
-      {loading === 'error' ? "BOOM" : ""}
+      {comments === undefined ? "Please wait" : ""}
     </ExtraBorder>
   )
 }
 
 interface CommentItemProps {
-  comment: Comment
+  postId: number;
+  comment: Comment;
 }
-const CommentItem: FunctionComponent<CommentItemProps> = ({ comment }) => (
-  <PseudoBox as="article" >
-    <Text>
-      {comment.name}
-    </Text>
-    <AppDivider />
-    {comment.body}
-  </PseudoBox>
-);
+const CommentItem: FunctionComponent<CommentItemProps> = ({ postId, comment }) => {
+  const [comments, setComments] = useRecoilState(commentsAtom(postId));
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const index = comments.findIndex(current => current.id === comment.id);
+      if (index === -1) {
+        return;
+      }
+      const updatedComment = { ...comment, body: event.target.value };
+      const updatedComments = [...comments.slice(0, index), updatedComment, ...comments.slice(index + 1)]
+      setComments(updatedComments);
+    },
+    [comment, comments, setComments]
+  );
+  return (
+    <ExtraBorder marginTop="5" >
+      <Text>
+        {comment.name}
+      </Text>
+      <AppDivider />
+      <Input defaultValue={comment.body} onChange={onChange} />
+    </ExtraBorder>
+  );
+}

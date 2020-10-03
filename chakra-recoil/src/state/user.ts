@@ -8,7 +8,7 @@ export interface User {
   email: string;
 }
 
-export const usersFamily = atomFamily<User | undefined, number | undefined>({
+export const usersAtom = atomFamily<User | undefined, number | undefined>({
   key: 'User',
   default: UserApi.get,
 });

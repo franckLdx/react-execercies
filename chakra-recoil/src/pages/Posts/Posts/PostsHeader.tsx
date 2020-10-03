@@ -56,12 +56,12 @@ Reload.displayName = "Reload";
 
 export const Filter: FunctionComponent = () => {
   const [filter, setFilter] = useRecoilState(filterPosts);
-  const handleChange = useCallback(
+  const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => setFilter(event.target.value),
     [setFilter]
   );
   return (
-    <Input placeholder="Search for a title" onChange={handleChange} defaultValue={filter} />
+    <Input placeholder="Search for a title" onChange={onChange} defaultValue={filter} />
   );
 };
 Filter.displayName = "Filter";
