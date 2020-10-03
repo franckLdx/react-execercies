@@ -19,6 +19,7 @@ export const Post: FunctionComponent = () => {
   return (
     <LoadablePage loadingState={metaData.loadingState} loadingError={metaData.error}>
       <Card
+        key={post?.id}
         title={post?.title}
         body={post?.body}
         footer={

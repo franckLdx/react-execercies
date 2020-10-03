@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { atom, selectorFamily, useRecoilState } from "recoil";
 import { PostsApi } from "../api/posts";
-import { Comment } from "./comment";
 import { LoadingState } from "./loadingState";
 import { postsAtom } from "./posts";
 
@@ -10,7 +9,7 @@ export interface Post {
   title: string;
   body: string;
   userId: number;
-  comments?: Comment[];
+  commentKeys?: string[];
 }
 
 export interface PostMetadata {

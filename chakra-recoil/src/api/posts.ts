@@ -1,5 +1,11 @@
-import { Post } from "../state/post";
 import { get } from "./misc";
+
+interface PostPayload {
+  id: number;
+  title: string;
+  body: string;
+  userId: number;
+}
 
 interface CommentPayload {
   postId: number,
@@ -11,10 +17,10 @@ interface CommentPayload {
 
 
 export const PostsApi = {
-  async getAll(): Promise<Post[]> {
+  async getAll(): Promise<PostPayload[]> {
     return await get("posts", `Failed to load posts`);
   },
-  async get(postId: number): Promise<Post> {
+  async get(postId: number): Promise<PostPayload> {
     const url = getPostUrl(postId);
     return await get(url, `Failed to load post ${postId}`);
   },
