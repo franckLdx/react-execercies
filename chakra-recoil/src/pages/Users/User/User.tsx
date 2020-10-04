@@ -2,9 +2,8 @@ import React, { FunctionComponent } from "react";
 import { useParamId } from "../../../sharedHooks/hooks";
 import { useRecoilValue } from "recoil";
 import { usersAtom } from "../../../state/user";
-import { Card } from "../../../sharedComponents/Card";
+import { Card, CardText } from "../../../sharedComponents/Card";
 import { Page } from "../../../sharedPages/Page";
-import Text from "@chakra-ui/core/dist/Text";
 
 export const User: FunctionComponent = () => {
   const userId = useParamId();
@@ -12,15 +11,11 @@ export const User: FunctionComponent = () => {
 
   return (
     <Page>
-      <Card
-        title={user?.username}
-        body={
-          <>
-            <Text>Name: {user?.name}</Text>
-            <Text>Email: {user?.email}</Text>
-          </>
-        }
-      />
+      <Card>
+        <CardText text={user?.username ?? ''} />
+        <CardText text={`Name: ${user?.name}`} />
+        <CardText text={`Email: ${user?.email}`} />
+      </Card>
     </Page>
   );
 }

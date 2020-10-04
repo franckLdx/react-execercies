@@ -1,19 +1,40 @@
-import React, { FunctionComponent, ReactNode } from "react";
-import { Heading, Text } from "@chakra-ui/core/dist/";
-import { AppDivider } from "./AppDivider";
+import { BoxProps } from "@chakra-ui/core/dist/Box";
+import Text from "@chakra-ui/core/dist/Text";
+import React, { FunctionComponent, memo, useMemo } from "react";
+import { AppDivider, AppDividerProps } from "./AppDivider";
+import { ExtraBorder, ExtraBorderProps } from "./ExtraBorder";
 
-interface CardProps {
-  title: string | ReactNode;
-  body?: string | ReactNode;
-  footer?: string | ReactNode;
+type CardProps = Pick<ExtraBorderProps, 'marginTop'>
+
+export const Card: FunctionComponent<CardProps> = memo(({ children, ...extraBorderProps }) => (
+  <ExtraBorder backgroundColor="app.secondaryBackground" {...extraBorderProps}>
+    {children}
+  </ExtraBorder >
+));
+Card.displayName = "Card";
+
+type Size = 'small' | 'normal' | 'medium';
+type CardTextProps = {
+  text: string;
+  size?: Size
+} & Pick<BoxProps, 'textAlign'>
+
+const mapSize: Record<Size, string> = {
+  'small': 'xl',
+  'normal': '4xl',
+  'medium': '5xl',
 }
 
-export const Card: FunctionComponent<CardProps> = ({ title, body, footer }) => (
-  <>
-    <Heading fontSize="5xl">{title}</Heading>
-    <AppDivider marginBottom="8" />
-    <Text fontSize="4xl">{body}</Text>
-    <AppDivider marginTop="8" />
-    <Text fontSize="4xl" textAlign="right">{footer}</Text>
-  </>
-);
+export const CardText: FunctionComponent<CardTextProps> = memo(({ text, size, textAlign }) => {
+  const fontSize = useMemo(() => mapSize[size ?? 'normal'], [size]);
+  return (
+    <Text fontSize={fontSize} textAlign={textAlign}>{text}</Text>
+  );
+});
+CardText.displayName = "CardText";
+
+export type CardDividerProps = Pick<AppDividerProps, 'marginBottom'>;
+export const CardDivider: FunctionComponent<CardDividerProps> = ({ marginBottom }) =>
+  <AppDivider marginBottom={marginBottom ?? "8"} />;
+
+CardDivider.displayName = "CardDivider";

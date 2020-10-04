@@ -1,36 +1,22 @@
+import { Box } from '@chakra-ui/core';
 import React, { FunctionComponent } from 'react';
-import { useRecoilValue } from 'recoil';
-import Text from "@chakra-ui/core/dist/Text";
-import { usersAtom } from '../../../state/user';
-import { Link } from 'react-router-dom';
 import { useParamId } from '../../../sharedHooks/hooks';
 import { LoadablePage } from '../../../sharedPages/LoadablePage';
-import { Card } from '../../../sharedComponents/Card';
 import { useLoadPost } from '../../../state/post';
 import { Comments } from './Comments';
+import { PostInfo } from './PostInfo';
 
 export const Post: FunctionComponent = () => {
   const postId = useParamId();
-
   const [post, metaData] = useLoadPost(postId);
-
-  const user = useRecoilValue(usersAtom(post?.userId));
-
   return (
     <LoadablePage loadingState={metaData.loadingState} loadingError={metaData.error}>
-      <Card
-        key={post?.id}
-        title={post?.title}
-        body={post?.body}
-        footer={
-          user && (
-            <Link to={`/users/${user.id}`}>
-              <Text textAlign="right">{user?.username}</Text>
-            </Link>
-          )
-        }
-      />
-      <Comments postId={postId} />
-    </LoadablePage>
+      <Box padding="4">
+        {post && <PostInfo post={post} />}
+        <Comments paddingTop="6" postId={postId} />
+      </Box>
+    </LoadablePage >
   );
-}
+};
+
+Post.displayName = "Post";

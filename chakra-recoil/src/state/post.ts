@@ -25,8 +25,8 @@ export const postMetaDataAtom = atom<PostMetadata>({
   }
 });
 
-export const useLoadPost = (id: number) => {
-  const [post, setPost] = useRecoilState(getPost(id));
+export const useLoadPost = (postId: number) => {
+  const [post, setPost] = useRecoilState(getPost(postId));
   const [metaData, setMetaData] = useRecoilState(postMetaDataAtom)
 
   useEffect(() => {
@@ -35,11 +35,11 @@ export const useLoadPost = (id: number) => {
       return;
     }
     setMetaData({ loadingState: 'loading', error: undefined });
-    PostsApi.get(id).then(post => {
+    PostsApi.get(postId).then(post => {
       setMetaData({ loadingState: 'loaded', error: undefined });
       setPost(post)
     }).catch(error => setMetaData({ loadingState: 'error', error }));
-  }, [id, post, setMetaData, setPost])
+  }, [postId, post, setMetaData, setPost])
 
   return [post, metaData] as const;
 }

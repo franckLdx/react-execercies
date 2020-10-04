@@ -1,18 +1,18 @@
-import React, { ChangeEvent, FunctionComponent, useCallback, useEffect, useMemo } from 'react';
-import { ExtraBorder } from '../../../sharedComponents/ExtraBorder';
-import { commentsMap, loadComments } from '../../../state/comment';
+import React, { FunctionComponent, useEffect } from 'react';
+import { loadComments } from '../../../state/comment';
 import Text from "@chakra-ui/core/dist/Text";
-import { AppDivider } from '../../../sharedComponents/AppDivider';
-import Input from '@chakra-ui/core/dist/Input';
 import { useRecoilState } from 'recoil';
 import { getPost, Post } from '../../../state/post';
+import { CommentItem } from './CommentItem';
+import { BoxProps } from '@chakra-ui/core';
 
-interface CommentsProps {
+type CommentsProps = {
   postId: number;
-}
+} & Pick<BoxProps, 'paddingTop'>
 
-export const Comments: FunctionComponent<CommentsProps> = ({ postId }) => {
+export const Comments: FunctionComponent<CommentsProps> = ({ postId, ...props }) => {
   const [post, setPost] = useRecoilState(getPost(postId));
+
   useEffect(() => {
     if (post === undefined) {
       return;
@@ -26,45 +26,12 @@ export const Comments: FunctionComponent<CommentsProps> = ({ postId }) => {
   }, [post, postId, setPost]);
 
   return (
-    <ExtraBorder>
-      <Text color="app.main" fontSize="3xl" fontWeight="app.bold"> Comments:</Text>
+    <>
+      <Text color="app.main" fontSize="3xl" fontWeight="app.bold" {...props}> Comments:</Text>
       {
         post?.commentKeys?.map(commentKey => <CommentItem key={commentKey} commentKey={commentKey} />)
       }
       {post?.commentKeys === undefined ? "Please wait" : ""}
-    </ExtraBorder>
+    </>
   )
-}
-
-interface CommentItemProps {
-  commentKey: string;
-}
-const CommentItem: FunctionComponent<CommentItemProps> = ({ commentKey }) => {
-  const atom = useMemo(() => {
-    const find = commentsMap.get(commentKey);
-    if (!find) {
-      throw new Error("Unconsistent state");
-    }
-    return find;
-  }, [commentKey]);
-
-  const [comment, setComment] = useRecoilState(atom);
-
-  const onChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const updatedComment = { ...comment, body: event.target.value };
-      setComment(updatedComment);
-    },
-    [comment, setComment]
-  );
-
-  return (
-    <ExtraBorder marginTop="5" >
-      <Text>
-        {comment.name}
-      </Text>
-      <AppDivider />
-      <Input defaultValue={comment.body} onChange={onChange} />
-    </ExtraBorder>
-  );
 }
