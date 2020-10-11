@@ -27,6 +27,7 @@ export const customTheme = {
     ...theme.fontSizes,
     app: {
       normal: theme.fontSizes.xl,
+      medium: theme.fontSizes["2xl"],
     }
   },
   shadows: {
