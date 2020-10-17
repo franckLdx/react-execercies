@@ -12,7 +12,7 @@ export const PostsHeader: FunctionComponent = memo(() => (
     </Box >
   </ExtraBorder >
 ));
-PostsHeader.displayName = "Header";
+PostsHeader.displayName = "PostsHeader";
 
 type ReloadProps = Pick<BoxProps, 'marginRight'>;
 
@@ -59,4 +59,4 @@ export const Filter: FunctionComponent = () => {
     <Input placeholder="Search for a title" onChange={onChange} defaultValue={filter} />
   );
 };
-Filter.displayName = "Filter";
+Filter.displayName = "PostsFilter";
