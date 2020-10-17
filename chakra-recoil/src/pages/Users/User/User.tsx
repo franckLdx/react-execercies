@@ -1,13 +1,13 @@
 import React, { FunctionComponent } from "react";
 import { useParamId } from "../../../sharedHooks/hooks";
 import { useRecoilValue } from "recoil";
-import { usersAtom } from "../../../state/user";
 import { Card, CardText } from "../../../sharedComponents/Card";
 import { Page } from "../../../sharedPages/Page";
+import { userById } from "../../../state/users";
 
 export const User: FunctionComponent = () => {
   const userId = useParamId();
-  const user = useRecoilValue(usersAtom(userId));
+  const user = useRecoilValue(userById(userId));
 
   return (
     <Page>

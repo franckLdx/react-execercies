@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
 import { UserInfo } from "./UserInfo";
-import { Post } from "../../../state/post";
 import { AppDivider } from "../../../sharedComponents/AppDivider";
+import { Post } from "../../../state/posts/atoms";
 
 type PostItemProps = {
   post: Post;
