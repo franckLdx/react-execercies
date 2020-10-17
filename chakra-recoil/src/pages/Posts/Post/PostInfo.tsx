@@ -2,7 +2,7 @@ import React, { FunctionComponent, memo, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
 import { Card, CardDivider, CardText } from '../../../sharedComponents/Card';
-import { userById } from '../../../state/users';
+import { userByIdState } from '../../../state/users';
 import { Post } from '../../../state/posts/atoms';
 
 interface PostInfoProps {
@@ -10,7 +10,7 @@ interface PostInfoProps {
 }
 
 export const PostInfo: FunctionComponent<PostInfoProps> = memo(({ post }) => {
-  const user = useRecoilValue(userById(post.userId));
+  const user = useRecoilValue(userByIdState(post.userId));
   const userLink = useMemo(() => `/users/${post.id}`, [post]);
 
   return (

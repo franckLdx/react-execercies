@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo } from "react";
 import Text from "@chakra-ui/core/dist/Text";
-import { userById } from "../../../state/users";
+import { userByIdState } from "../../../state/users";
 import { useRecoilValue } from "recoil";
 
 interface UserInfoProps {
@@ -8,7 +8,7 @@ interface UserInfoProps {
 }
 
 export const UserInfo: FunctionComponent<UserInfoProps> = memo(({ userId }) => {
-  const user = useRecoilValue(userById(userId));
+  const user = useRecoilValue(userByIdState(userId));
   return (
     <Text textAlign="right" color="app.secondary">
       {user?.username}
