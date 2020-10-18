@@ -1,3 +1,3 @@
-import { Users } from './UsersList';
+import { Users } from './Users';
 
 export default Users;

@@ -13,7 +13,7 @@ interface UserPayload {
   }
 }
 
-export const UserApi = {
+export const UsersApi = {
   async getAll(): Promise<UserPayload[]> {
     return await get("users", `Failed to load users`);
   },

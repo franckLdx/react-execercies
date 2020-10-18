@@ -1,10 +1,13 @@
 import React, { FunctionComponent } from "react";
-import Box, { BoxProps } from "@chakra-ui/core/dist/Box";
+import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 
-export type ExtraBorderProps = Pick<BoxProps, 'display' | 'alignItems' | 'margin' | 'marginTop' | 'marginBottom' | 'backgroundColor'>;
+export type ExtraBorderProps = Omit<
+  PseudoBoxProps,
+  'borderColor' | 'borderWidth' | 'padding'
+>;
 
 export const ExtraBorder: FunctionComponent<ExtraBorderProps> = ({ children, ...boxProps }) => (
-  <Box borderColor="app.mainBorder" borderWidth="1px" padding="1" {...boxProps}>
+  <PseudoBox borderColor="app.mainBorder" borderWidth="1px" padding="1" {...boxProps}>
     {children}
-  </Box>
+  </PseudoBox >
 );

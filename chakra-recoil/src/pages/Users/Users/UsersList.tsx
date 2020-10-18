@@ -1,23 +1,35 @@
-import React, { FunctionComponent } from 'react';
-import { Page } from '../../../sharedPages/Page';
+import React, { FunctionComponent, memo, useCallback, useMemo } from 'react';
+import Text from '@chakra-ui/core/dist/Text';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { userByIdState, usersState } from '../../../state/users';
+import { currentUserAtom } from '../../../state/users/atoms';
+import { SimpleItem, SipmleList } from '../../../sharedComponents/SimpleList';
 
-export const Users: FunctionComponent = () => {
+export const UsersList: FunctionComponent = () => {
+  const users = useRecoilValue(usersState);
   return (
-    <Page>
-      {/* <LoadableComponent loadingState={metaData.loadingState} loadingError={metaData.error}>
-        <SimpleGrid as="section" columns={2} spacing={5}>
-          {userIds.map(id => (<UserItem key={id} userId={id} />))}
-        </SimpleGrid>
-      </LoadableComponent> */}
-      USERS
-    </Page>
+    <SipmleList>
+      {users.map(user => <UserItem key={user.id} userId={user.id} />)}
+    </SipmleList>
   );
 }
 
-// interface UserItemProps {
-//   userId: number;
-// }
-// const UserItem: FunctionComponent<UserItemProps> = ({ userId }) => {
-//   const user = useRecoilValue(userById(userId));
-//   return (<Text>{user?.name}</Text>);
-// }
+interface UserItemProps {
+  userId: number;
+}
+const UserItem: FunctionComponent<UserItemProps> = ({ userId }) => {
+  const user = useRecoilValue(userByIdState(userId));
+  const [selectedUserId, setSelected] = useRecoilState(currentUserAtom);
+  const isSelelected = useMemo(() => selectedUserId === userId, [selectedUserId, userId]);
+  const onSelected = useCallback(
+    () => setSelected(userId),
+    [setSelected, userId]
+  );
+  const UserItem = memo(() => <Text onClick={onSelected}>{isSelelected ? "YES" : "NO"} - {user?.name}</Text >);
+  UserItem.displayName = "UserItem";
+  return (
+    <SimpleItem>
+      <UserItem />
+    </SimpleItem>
+  );
+}

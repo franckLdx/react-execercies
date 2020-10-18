@@ -1,4 +1,4 @@
-import { RecoilState } from "recoil";
+import { atom } from "recoil";
 
 export interface User {
   id: number,
@@ -7,4 +7,4 @@ export interface User {
   email: string;
 }
 
-export type UserState = RecoilState<User | undefined>
+export const currentUserAtom = atom<number | undefined>({ key: 'currentUser', default: undefined });

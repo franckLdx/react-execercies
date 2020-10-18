@@ -10,6 +10,7 @@ export const customTheme = {
       secondary: theme.colors.blue[800],
       mainBackground: theme.colors.blue[100],
       secondaryBackground: theme.colors.white,
+      thirdBackground: theme.colors.blue[200],
       mainBorder: "black",
       progress: "green",
       divider: theme.colors.blue[700],
