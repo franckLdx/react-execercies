@@ -9,6 +9,7 @@ export const SimpleItem: FunctionComponent = ({ children }) => {
     </ExtraBorder >
   )
 };
+SimpleItem.displayName = "SimpleItem";
 
 const Props: PseudoBoxProps = {
   cursor: "pointer",
