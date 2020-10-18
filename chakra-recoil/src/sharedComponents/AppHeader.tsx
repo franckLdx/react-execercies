@@ -2,7 +2,7 @@ import React, { FunctionComponent, memo } from 'react';
 import { HeaderLink } from './HeaderLink';
 import { ExtraBorder } from './ExtraBorder';
 import { Image } from '@chakra-ui/core';
-import { ABOUT_URL, POSTS_URL, USERS_URL } from '../routes/routesDef';
+import { getPostsPageUrl, getUsersPageUrl, getAboutPageUrl } from '../routes';
 
 export const AppHeader: FunctionComponent = memo(() => (
   <ExtraBorder display="flex" alignItems="center" marginTop="1" marginBottom="1">
@@ -12,8 +12,8 @@ export const AppHeader: FunctionComponent = memo(() => (
       alt="Icon react europe"
       rounded="full"
     />
-    <HeaderLink url={POSTS_URL} label="Posts" />
-    <HeaderLink url={USERS_URL} label="Users" />
-    <HeaderLink url={ABOUT_URL} label="About" />
+    <HeaderLink url={getPostsPageUrl()} label="Posts" />
+    <HeaderLink url={getUsersPageUrl()} label="Users" />
+    <HeaderLink url={getAboutPageUrl()} label="About" />
   </ExtraBorder>
 ));

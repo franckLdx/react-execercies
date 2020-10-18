@@ -1,26 +1,30 @@
-import React, { FunctionComponent, memo } from "react";
+import React, { FunctionComponent, memo, useMemo } from "react";
 import { Link } from 'react-router-dom'
 import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
 import { UserInfo } from "./UserInfo";
 import { AppDivider } from "../../../sharedComponents/AppDivider";
 import { Post } from "../../../state/posts/atoms";
+import { getPostPageUrl } from "../../../routes";
 
 type PostItemProps = {
   post: Post;
 } & Pick<PseudoBoxProps, 'mt' | 'marginTop'>
 
-export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) => (
-  <Link to={`/posts/${post.id}`}>
-    <PseudoBox as="article" {...PostItemContainerProps} mt={mt}>
-      <Text minHeight="app.itemContainer.minHeight">
-        {post.title}
-      </Text>
-      <AppDivider />
-      <UserInfo userId={post.userId} />
-    </PseudoBox>
-  </Link >
-));
+export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) => {
+  const postLink = useMemo(() => getPostPageUrl(post.id), [post]);
+  return (
+    <Link to={postLink}>
+      <PseudoBox as="article" {...PostItemContainerProps} mt={mt}>
+        <Text minHeight="app.itemContainer.minHeight">
+          {post.title}
+        </Text>
+        <AppDivider />
+        <UserInfo userId={post.userId} />
+      </PseudoBox>
+    </Link >
+  )
+});
 
 const PostItemContainerProps: PseudoBoxProps = {
   backgroundColor: "app.secondaryBackground",

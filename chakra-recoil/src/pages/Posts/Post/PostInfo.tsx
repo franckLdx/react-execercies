@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardDivider, CardText } from '../../../sharedComponents/Card';
 import { userByIdState } from '../../../state/users';
 import { Post } from '../../../state/posts/atoms';
+import { getUserPageUrl } from '../../../routes';
 
 interface PostInfoProps {
   post: Post;
@@ -11,7 +12,7 @@ interface PostInfoProps {
 
 export const PostInfo: FunctionComponent<PostInfoProps> = memo(({ post }) => {
   const user = useRecoilValue(userByIdState(post.userId));
-  const userLink = useMemo(() => `/users/${post.id}`, [post]);
+  const userLink = useMemo(() => getUserPageUrl(post.userId), [post]);
 
   return (
     <Card>

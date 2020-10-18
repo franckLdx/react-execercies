@@ -7,9 +7,16 @@ const Users = lazy(() => import("../pages/Users/Users"));
 const User = lazy(() => import("../pages/Users/User"));
 const About = lazy(() => import("../pages/About"));
 
-export const POSTS_URL = '/posts';
-export const USERS_URL = '/users';
-export const ABOUT_URL = '/about';
+const POSTS_URL = '/posts';
+const USERS_URL = '/users';
+const ABOUT_URL = '/about';
+
+export const getHomePageUrl = () => "/";
+export const getPostsPageUrl = () => POSTS_URL;
+export const getPostPageUrl = (postId: number) => `${POSTS_URL}/${postId}`;
+export const getUsersPageUrl = () => USERS_URL;
+export const getUserPageUrl = (userId: number) => `${USERS_URL}/${userId}`;
+export const getAboutPageUrl = () => ABOUT_URL;
 
 export const routesDef = [
   { path: "/", Component: Home },

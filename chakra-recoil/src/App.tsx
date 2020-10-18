@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { AppRouter } from "./routes/AppRouter";
+import { AppRouter } from "./routes";
 import { ErrorBoundary } from "./sharedComponents/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./sharedComponents/LoadingProvider";
