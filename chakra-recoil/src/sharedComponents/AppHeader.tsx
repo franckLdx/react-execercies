@@ -1,11 +1,11 @@
 import React, { FunctionComponent, memo } from 'react';
 import { HeaderLink } from './HeaderLink';
-import { ExtraBorder } from './ExtraBorder';
+import { AppBorder } from './AppBorder';
 import { Image } from '@chakra-ui/core';
 import { getPostsPageUrl, getUsersPageUrl, getAboutPageUrl } from '../routes';
 
 export const AppHeader: FunctionComponent = memo(() => (
-  <ExtraBorder display="flex" alignItems="center" marginTop="1" marginBottom="1">
+  <AppBorder display="flex" alignItems="center" marginTop="1" marginBottom="1">
     <Image size="50px"
       objectFit="cover"
       src="/reactEurope.png"
@@ -15,5 +15,5 @@ export const AppHeader: FunctionComponent = memo(() => (
     <HeaderLink url={getPostsPageUrl()} label="Posts" />
     <HeaderLink url={getUsersPageUrl()} label="Users" />
     <HeaderLink url={getAboutPageUrl()} label="About" />
-  </ExtraBorder>
+  </AppBorder>
 ));

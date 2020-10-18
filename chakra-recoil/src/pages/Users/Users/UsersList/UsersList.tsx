@@ -1,19 +1,21 @@
 import React, { FunctionComponent, useCallback } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
-import { SipmleList } from '../../../../sharedComponents/SimpleList';
+import { SipmleList, SipmleListProps } from '../../../../sharedComponents/SimpleList';
 import { usersState } from '../../../../state/users';
-import { currentUserAtom } from '../../../../state/users/atoms';
+import { currentUserIdAtom } from '../../../../state/users/atoms';
 import { UserItem } from './UserItem';
 
-export const UsersList: FunctionComponent = () => {
+type UsersListProps = SipmleListProps;
+
+export const UsersList: FunctionComponent<UsersListProps> = (sipmleListProps) => {
   const users = useRecoilValue(usersState);
-  const [selectedUserId, setSelected] = useRecoilState(currentUserAtom);
+  const [selectedUserId, setSelected] = useRecoilState(currentUserIdAtom);
   const onSelected = useCallback(
     (userId: number) => setSelected(userId),
     [setSelected]
   );
   return (
-    <SipmleList>
+    <SipmleList {...sipmleListProps}>
       {
         users.map(({ id }) =>
           <UserItem

@@ -7,4 +7,4 @@ export interface User {
   email: string;
 }
 
-export const currentUserAtom = atom<number | undefined>({ key: 'currentUser', default: undefined });
+export const currentUserIdAtom = atom<number | undefined>({ key: 'currentUserId', default: undefined });

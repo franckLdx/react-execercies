@@ -1,16 +1,16 @@
 import React, { ChangeEvent, FunctionComponent, memo, useCallback } from "react";
-import { ExtraBorder } from "../../../sharedComponents/ExtraBorder";
+import { AppBorder } from "../../../sharedComponents/AppBorder";
 import { useRecoilState } from "recoil";
 import Box, { BoxProps } from "@chakra-ui/core/dist/Box";
 import Input from "@chakra-ui/core/dist/Input";
 import { filterPostsAtom } from "../../../state/posts";
 
 export const PostsHeader: FunctionComponent = memo(() => (
-  <ExtraBorder >
+  <AppBorder >
     <Box display="flex" flexDirection={["column", "column", "row"]} >
       <Filter />
     </Box >
-  </ExtraBorder >
+  </AppBorder >
 ));
 PostsHeader.displayName = "PostsHeader";
 

@@ -1,22 +1,22 @@
 import React, { FunctionComponent } from 'react';
 import { Box } from '@chakra-ui/core';
 import { AppHeader } from '../sharedComponents/AppHeader';
-import { ExtraBorder, ExtraBorderProps } from '../sharedComponents/ExtraBorder';
+import { AppBorder, AppBorderProps } from '../sharedComponents/AppBorder';
 import { LoadingProvider } from '../sharedComponents/LoadingProvider';
 
 export const Page: FunctionComponent = ({ children }) => (
-  <ExtraBorder id="Page" {...pageProps}>
+  <AppBorder id="Page" {...pageProps}>
     <Box>
       <AppHeader />
       <LoadingProvider>
         {children}
       </LoadingProvider>
     </Box>
-  </ExtraBorder>
+  </AppBorder>
 )
 Page.displayName = "Page";
 
-const pageProps: ExtraBorderProps = {
+const pageProps: AppBorderProps = {
   color: "app.main",
   fontWeight: "app.normal",
   backgroundColor: "app.mainBackground",

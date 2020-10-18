@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react';
-import { ExtraBorder } from '../ExtraBorder';
+import { AppBorder, AppBorderProps } from '../AppBorder';
 
-export const SipmleList: FunctionComponent = ({ children }) => (
-  <ExtraBorder width="2xs" height="100%" overflow="auto">
+export type SipmleListProps = AppBorderProps;
+
+export const SipmleList: FunctionComponent<SipmleListProps> = ({ children, ...appBorderProps }) => (
+  <AppBorder width="2xs" height="100%" overflow="auto" {...appBorderProps}>
     {children}
-  </ExtraBorder>
+  </AppBorder>
 );

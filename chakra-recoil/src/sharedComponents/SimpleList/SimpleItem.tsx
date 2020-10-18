@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import { PseudoBoxProps } from '@chakra-ui/core';
-import { ExtraBorder } from '../ExtraBorder';
+import { AppBorder } from '../AppBorder';
 
 export const SimpleItem: FunctionComponent = ({ children }) => {
   return (
-    <ExtraBorder marginBottom="1" {...Props}>
+    <AppBorder marginBottom="1" {...Props}>
       {children}
-    </ExtraBorder >
+    </AppBorder >
   )
 };
 SimpleItem.displayName = "SimpleItem";

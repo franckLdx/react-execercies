@@ -2,14 +2,14 @@ import { BoxProps } from "@chakra-ui/core/dist/Box";
 import Text from "@chakra-ui/core/dist/Text";
 import React, { FunctionComponent, memo, useMemo } from "react";
 import { AppDivider, AppDividerProps } from "./AppDivider";
-import { ExtraBorder, ExtraBorderProps } from "./ExtraBorder";
+import { AppBorder, AppBorderProps } from "./AppBorder";
 
-type CardProps = Pick<ExtraBorderProps, 'marginTop'>
+type CardProps = Pick<AppBorderProps, 'marginTop'>
 
 export const Card: FunctionComponent<CardProps> = memo(({ children, ...extraBorderProps }) => (
-  <ExtraBorder backgroundColor="app.secondaryBackground" {...extraBorderProps}>
+  <AppBorder backgroundColor="app.maimBackground" {...extraBorderProps}>
     {children}
-  </ExtraBorder >
+  </AppBorder >
 ));
 Card.displayName = "Card";
 
