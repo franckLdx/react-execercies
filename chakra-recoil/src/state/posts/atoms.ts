@@ -1,4 +1,5 @@
 import { atom } from "recoil";
+import { atomMap } from "../atomMap";
 
 export interface Post {
   id: number;
@@ -8,9 +9,6 @@ export interface Post {
   commentKeys?: string[];
 }
 
-export const postsAtom = atom<Post[]>({
-  key: "posts",
-  default: [],
-});
-
 export const filterPostsAtom = atom<string | undefined>({ key: "postsFilter", default: undefined });
+
+export const { map: postsCache, add: addToCache, get: getFromCache } = atomMap<number, Post>('posts');

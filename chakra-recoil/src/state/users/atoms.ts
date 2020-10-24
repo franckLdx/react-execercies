@@ -1,4 +1,5 @@
-import { atom, RecoilState } from "recoil";
+import { atom } from "recoil";
+import { atomMap } from "../atomMap";
 
 export interface User {
   id: number,
@@ -9,6 +10,4 @@ export interface User {
 
 export const currentUserIdAtom = atom<number | undefined>({ key: 'currentUserId', default: undefined });
 
-type UserAtom = RecoilState<User>;
-
-export const usersCache: Map<number, UserAtom> = new Map();
+export const { map: usersCache, add: addToCache, get: getFromCache } = atomMap<number, User>('users');

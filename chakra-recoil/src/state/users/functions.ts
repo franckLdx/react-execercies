@@ -1,6 +1,6 @@
-import { atom, selector, selectorFamily } from "recoil";
+import { selector, selectorFamily } from "recoil";
 import { UsersApi } from "../../api/users";
-import { currentUserIdAtom, User, usersCache } from "./atoms";
+import { addToCache, currentUserIdAtom, getFromCache, User, usersCache } from "./atoms";
 
 export const usersState = selector<User[]>({
   key: "usersList",
@@ -17,13 +17,13 @@ export const userByIdState = selectorFamily<User, number>({
   key: 'userById',
   get(userId) {
     return async ({ get }) => {
-      const userAtom = usersCache.get(userId);
-      if (userAtom) {
-        return get(userAtom);
+      const user = get(getFromCache(userId));
+      if (user !== undefined) {
+        return user;
       }
-      const user = await UsersApi.get(userId)
-      registerUser(user);
-      return user;
+      const newUser = await UsersApi.get(userId)
+      registerUser(newUser);
+      return newUser;
     }
   },
 });
@@ -39,7 +39,4 @@ export const currentUserState = selector<User | undefined>({
   },
 });
 
-function registerUser(user: User) {
-  const newAotm = atom<User>({ key: `user_${user.id}`, default: user });
-  usersCache.set(user.id, newAotm);
-}
+const registerUser = (user: User) => addToCache(user.id, user);
