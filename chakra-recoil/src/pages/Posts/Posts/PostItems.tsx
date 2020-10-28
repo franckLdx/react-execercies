@@ -25,6 +25,7 @@ export const PostItem: FunctionComponent<PostItemProps> = memo(({ post, mt }) =>
     </Link >
   )
 });
+PostItem.displayName = "PostItem";
 
 const PostItemContainerProps: PseudoBoxProps = {
   backgroundColor: "app.secondaryBackground",

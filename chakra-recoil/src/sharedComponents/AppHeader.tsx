@@ -17,3 +17,4 @@ export const AppHeader: FunctionComponent = memo(() => (
     <HeaderLink url={getAboutPageUrl()} label="About" />
   </AppBorder>
 ));
+AppHeader.displayName = "AppHeader";

@@ -8,7 +8,7 @@ type CommentsProps = {
   postId: number;
 } & Pick<BoxProps, 'paddingTop'>
 
-export const Comments: FunctionComponent<CommentsProps> = ({ postId, ...props }) => {
+export const Comments: FunctionComponent<CommentsProps> = ({ postId }) => {
   const comments = useRecoilValue(commentsByPostIdState(postId));
   return (
     <>
