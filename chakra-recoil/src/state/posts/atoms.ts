@@ -9,6 +9,8 @@ export interface Post {
   commentKeys?: string[];
 }
 
-export const filterPostsAtom = atom<string | undefined>({ key: "postsFilter", default: undefined });
+export const filterPostsState = atom<string | undefined>({ key: "postsFilter", default: undefined });
 
 export const { map: postsCache, add: addToCache, get: getFromCache } = atomMap<number, Post>('posts');
+
+export const loadedPostsDateState = atom<number | undefined>({ key: "loadedPostsDate", default: undefined });

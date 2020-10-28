@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { addToCache, filterPostsAtom, getFromCache, Post } from "./atoms";
+import { addToCache, filterPostsState, getFromCache, Post } from "./atoms";
 
 export const postsState = selector<Post[]>({
   key: "postsList",
@@ -11,11 +11,12 @@ export const postsState = selector<Post[]>({
   },
 });
 
+
 export const filteredPostsState = selector<Post[]>({
   key: "postsFiltered",
   async get({ get }) {
     const posts = get(postsState);
-    const filter = canonicalString(get(filterPostsAtom));
+    const filter = canonicalString(get(filterPostsState));
     return filter === undefined ? posts : posts.filter(post => canonicalString(post.title)?.includes(filter))
   },
 });
