@@ -6,14 +6,12 @@ import { UserCard } from '../UserCard';
 
 export const CurrentUser: FunctionComponent = () => {
   const userId = useRecoilValue(currentUserIdAtom);
-  if (userId === undefined) {
-    return <UserBorder />;
-  }
   return (
     <UserBorder>
-      <UserCard userId={userId} />
+      {userId !== undefined && <UserCard userId={userId} />}
     </UserBorder>
   );
 };
+CurrentUser.displayName = 'CurrentUser';
 
 const UserBorder: FunctionComponent = ({ children }) => <AppBorder width="100%" >{children}</AppBorder>

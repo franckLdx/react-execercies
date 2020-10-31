@@ -16,6 +16,9 @@ export const UserItem: FunctionComponent<UserItemProps> = memo(({ userId, isSele
     () => onSelected(userId),
     [onSelected, userId]
   );
+  if (user === undefined) {
+    throw new Error(`Can\`t find user ${userId}`);
+  }
   return (
     <SimpleItem>
       <TextItem text={user.name} isSelected={isSelected} onSelected={onMySelected} />

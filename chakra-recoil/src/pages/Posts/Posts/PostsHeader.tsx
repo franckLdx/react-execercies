@@ -1,12 +1,14 @@
 import React, { ChangeEvent, FunctionComponent, memo, useCallback } from "react";
 import { AppBorder } from "../../../sharedComponents/AppBorder";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import Box, { BoxProps } from "@chakra-ui/core/dist/Box";
 import Input from "@chakra-ui/core/dist/Input";
 import { filterPostsState } from "../../../state/posts";
 import Button from "@chakra-ui/core/dist/Button";
 import Icon from "@chakra-ui/core/dist/Icon";
+import Text from "@chakra-ui/core/dist/Text";
 import { loadedPostsDateState } from "../../../state/posts/atoms";
+import { format } from "date-fns";
 
 export const PostsHeader: FunctionComponent = memo(() => (
   <AppBorder >
@@ -21,7 +23,7 @@ PostsHeader.displayName = "PostsHeader";
 type ReloadProps = Pick<BoxProps, 'marginRight'>;
 
 export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
-  const setLoadedDate = useSetRecoilState(loadedPostsDateState);
+  const [loadedDate, setLoadedDate] = useRecoilState(loadedPostsDateState);
   const reload = useCallback(
     () => setLoadedDate(new Date()),
     [setLoadedDate]
@@ -35,14 +37,14 @@ export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
       color="app.main"
       fontWeight="app.medium"
     >
-      {/* <Text
+      <Text
         minWidth="15em"
         paddingLeft="3"
         paddingY="2"
         marginBottom={[1, 1, 0]}
       >
-        Last load: {metaData.loadedDate && format(metaData.loadedDate, "yyyy-MM-dd HH:mm:ss")}
-      </Text> */}
+        Last load: {loadedDate !== undefined ? format(loadedDate, "yyyy-MM-dd HH:mm:ss") : ''}
+      </Text>
       <Button flexGrow={1} onClick={reload}>
         Reload <Icon marginLeft={[1, 1, 3]} name="repeat" />
       </Button>

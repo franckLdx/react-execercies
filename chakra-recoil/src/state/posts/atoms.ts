@@ -1,5 +1,4 @@
 import { atom } from "recoil";
-import { atomMap } from "../atomMap";
 
 export interface Post {
   id: number;
@@ -11,6 +10,4 @@ export interface Post {
 
 export const filterPostsState = atom<string | undefined>({ key: "postsFilter", default: undefined });
 
-export const { map: postsCache, add: addToCache, get: getFromCache } = atomMap<number, Post>('posts');
-
-export const loadedPostsDateState = atom<Date | undefined>({ key: "loadedPostsDate", default: undefined });
+export const loadedPostsDateState = atom<Date>({ key: "loadedPostsDate", default: new Date() });

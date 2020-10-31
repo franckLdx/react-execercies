@@ -1,13 +1,12 @@
 import { selector, selectorFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { addToCache, filterPostsState, getFromCache, loadedPostsDateState, Post } from "./atoms";
+import { filterPostsState, loadedPostsDateState, Post } from "./atoms";
 
 export const postsState = selector<Post[]>({
   key: "postsList",
   async get({ get }) {
     get(loadedPostsDateState);
-    const posts = await PostsApi.getAll();
-    return posts;
+    return await PostsApi.getAll();
   },
 });
 
@@ -20,21 +19,14 @@ export const filteredPostsState = selector<Post[]>({
   },
 });
 
-export const postByIdState = selectorFamily<Post, number>({
+export const postByIdState = selectorFamily<Post | undefined, number>({
   key: "postById",
   get(postId) {
     return async ({ get }) => {
-      const post = get(getFromCache(postId));
-      if (post !== undefined) {
-        return post;
-      }
-      const newPost = await PostsApi.get(postId);
-      registerPost(newPost);
-      return newPost;
+      const posts = get(postsState);
+      return posts.find(post => post.id === postId);
     }
   },
 });
 
 const canonicalString = (value: string | null | undefined) => value?.trim().toLowerCase()
-
-const registerPost = (post: Post) => addToCache(post.id, post);

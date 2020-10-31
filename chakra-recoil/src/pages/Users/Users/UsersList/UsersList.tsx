@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useCallback } from 'react';
+import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { SipmleList, SipmleListProps } from '../../../../sharedComponents/SimpleList';
 import { usersState } from '../../../../state/users';
@@ -13,6 +13,14 @@ export const UsersList: FunctionComponent<UsersListProps> = (sipmleListProps) =>
   const onSelected = useCallback(
     (userId: number) => setSelected(userId),
     [setSelected]
+  );
+  useEffect(
+    () => {
+      if (selectedUserId === undefined && users.length > 0) {
+        setSelected(users[0].id);
+      }
+    },
+    [selectedUserId, setSelected, users]
   );
   return (
     <SipmleList {...sipmleListProps}>

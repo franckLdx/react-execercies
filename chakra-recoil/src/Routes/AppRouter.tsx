@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ErrorBoundary } from "../sharedComponents/ErrorBoudary";
 import { routesDef } from "./routesDef";
 
 const route = (routeDef: any, index: number) => (
@@ -14,9 +15,11 @@ const route = (routeDef: any, index: number) => (
 export const AppRouter: FunctionComponent = () => {
   return (
     <BrowserRouter>
-      <Switch>
-        {routesDef.map(route)}
-      </Switch>
+      <ErrorBoundary>
+        <Switch>
+          {routesDef.map(route)}
+        </Switch>
+      </ErrorBoundary>
     </BrowserRouter >
   )
 };

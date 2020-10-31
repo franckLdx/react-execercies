@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from "react";
 import { AppRouter } from "./routes";
-import { ErrorBoundary } from "./sharedComponents/ErrorBoudary";
 import { customTheme } from "./customTheme";
 import { LoadingProvider } from "./sharedComponents/LoadingProvider";
 import { RecoilRoot } from "recoil";
@@ -13,13 +12,11 @@ const App: FunctionComponent = () => (
   <ThemeProvider theme={customTheme}>
     <ColorModeProvider>
       <CSSReset />
-      <ErrorBoundary>
-        <RecoilRoot>
-          <LoadingProvider>
-            <AppRouter />
-          </LoadingProvider>
-        </RecoilRoot>
-      </ErrorBoundary>
+      <RecoilRoot>
+        <LoadingProvider>
+          <AppRouter />
+        </LoadingProvider>
+      </RecoilRoot>
     </ColorModeProvider>
   </ThemeProvider>
 );
