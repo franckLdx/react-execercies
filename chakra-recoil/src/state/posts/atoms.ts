@@ -13,4 +13,4 @@ export const filterPostsState = atom<string | undefined>({ key: "postsFilter", d
 
 export const { map: postsCache, add: addToCache, get: getFromCache } = atomMap<number, Post>('posts');
 
-export const loadedPostsDateState = atom<number | undefined>({ key: "loadedPostsDate", default: undefined });
+export const loadedPostsDateState = atom<Date | undefined>({ key: "loadedPostsDate", default: undefined });

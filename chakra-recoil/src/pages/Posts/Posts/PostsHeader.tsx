@@ -1,11 +1,12 @@
 import React, { ChangeEvent, FunctionComponent, memo, useCallback } from "react";
 import { AppBorder } from "../../../sharedComponents/AppBorder";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import Box, { BoxProps } from "@chakra-ui/core/dist/Box";
 import Input from "@chakra-ui/core/dist/Input";
 import { filterPostsState } from "../../../state/posts";
 import Button from "@chakra-ui/core/dist/Button";
 import Icon from "@chakra-ui/core/dist/Icon";
+import { loadedPostsDateState } from "../../../state/posts/atoms";
 
 export const PostsHeader: FunctionComponent = memo(() => (
   <AppBorder >
@@ -20,6 +21,12 @@ PostsHeader.displayName = "PostsHeader";
 type ReloadProps = Pick<BoxProps, 'marginRight'>;
 
 export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
+  const setLoadedDate = useSetRecoilState(loadedPostsDateState);
+  const reload = useCallback(
+    () => setLoadedDate(new Date()),
+    [setLoadedDate]
+  );
+
   return (
     <Box display="flex"
       flexDirection={["column", "row"]}
@@ -36,7 +43,7 @@ export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
       >
         Last load: {metaData.loadedDate && format(metaData.loadedDate, "yyyy-MM-dd HH:mm:ss")}
       </Text> */}
-      <Button flexGrow={1}>
+      <Button flexGrow={1} onClick={reload}>
         Reload <Icon marginLeft={[1, 1, 3]} name="repeat" />
       </Button>
     </Box>

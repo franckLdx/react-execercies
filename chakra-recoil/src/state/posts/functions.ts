@@ -1,16 +1,15 @@
 import { selector, selectorFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { addToCache, filterPostsState, getFromCache, Post } from "./atoms";
+import { addToCache, filterPostsState, getFromCache, loadedPostsDateState, Post } from "./atoms";
 
 export const postsState = selector<Post[]>({
   key: "postsList",
-  async get() {
+  async get({ get }) {
+    get(loadedPostsDateState);
     const posts = await PostsApi.getAll();
-    posts.forEach(registerPost)
     return posts;
   },
 });
-
 
 export const filteredPostsState = selector<Post[]>({
   key: "postsFiltered",
