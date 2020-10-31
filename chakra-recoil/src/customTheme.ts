@@ -1,5 +1,4 @@
 import { theme } from "@chakra-ui/core";
-console.log(theme);
 
 export const customTheme = {
   ...theme,

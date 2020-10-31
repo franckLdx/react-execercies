@@ -1,10 +1,10 @@
 import React, { FunctionComponent, memo, useMemo } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Link } from 'react-router-dom';
-import { Card, CardDivider, CardText } from '../../../sharedComponents/Card';
 import { userByIdState } from '../../../state/users';
 import { Post } from '../../../state/posts/atoms';
 import { getUserPageUrl } from '../../../routes';
+import { Card, CardText, CardDivider } from '../../../sharedComponents/Card';
 
 interface PostInfoProps {
   post: Post;
