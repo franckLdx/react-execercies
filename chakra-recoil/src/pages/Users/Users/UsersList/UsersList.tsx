@@ -5,7 +5,7 @@ import { usersState } from '../../../../state/users';
 import { currentUserIdAtom } from '../../../../state/users/atoms';
 import { UserItem } from './UserItem';
 
-type UsersListProps = SipmleListProps;
+export type UsersListProps = SipmleListProps;
 
 export const UsersList: FunctionComponent<UsersListProps> = (sipmleListProps) => {
   const users = useRecoilValue(usersState);
@@ -22,6 +22,7 @@ export const UsersList: FunctionComponent<UsersListProps> = (sipmleListProps) =>
     },
     [selectedUserId, setSelected, users]
   );
+
   return (
     <SipmleList {...sipmleListProps}>
       {

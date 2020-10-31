@@ -12,6 +12,7 @@ export const CurrentUser: FunctionComponent = () => {
     </UserBorder>
   );
 };
+
 CurrentUser.displayName = 'CurrentUser';
 
 const UserBorder: FunctionComponent = ({ children }) => <AppBorder width="100%" >{children}</AppBorder>

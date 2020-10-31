@@ -6,8 +6,14 @@ export type AppBorderProps = Omit<
   'borderColor' | 'borderWidth' | 'padding'
 >;
 
-export const AppBorder: FunctionComponent<AppBorderProps> = ({ children, ...boxProps }) => (
-  <PseudoBox borderColor="app.mainBorder" borderWidth="1px" padding="1" {...boxProps}>
+export const AppBorder: FunctionComponent<AppBorderProps> = ({ children, ...customPseudoBoxProps }) => (
+  <PseudoBox {...standardPseudoBoxProps} {...customPseudoBoxProps}>
     {children}
   </PseudoBox >
 );
+
+const standardPseudoBoxProps: PseudoBoxProps = {
+  borderColor: "app.mainBorder",
+  borderWidth: "1px",
+  padding: ["0", "1"],
+}

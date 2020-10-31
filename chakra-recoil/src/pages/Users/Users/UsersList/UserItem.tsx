@@ -25,5 +25,5 @@ export const UserItem: FunctionComponent<UserItemProps> = memo(({ userId, isSele
     </SimpleItem>
   );
 });
+
 UserItem.displayName = "UserItem";
-UserItem.whyDidYouRender = true;
