@@ -1,1 +1,2 @@
-export { commentsByPostIdState } from './functions';
+export { commentsAtom } from './atoms';
+export { commentState } from './functions';

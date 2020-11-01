@@ -1,26 +1,33 @@
-import React, { FunctionComponent } from 'react';
+import Input from '@chakra-ui/core/dist/Input';
+import React, { ChangeEvent, FunctionComponent, useCallback } from 'react';
+import { useRecoilState } from 'recoil';
 import { Card, CardDivider, CardText } from '../../../sharedComponents/Card';
-import { Comment } from '../../../state/comments/atoms';
+import { commentState } from '../../../state/comments';
 
 interface CommentItemProps {
-  comment: Comment;
+  postId: number;
+  commentName: string;
 }
 
-export const CommentItem: FunctionComponent<CommentItemProps> = ({ comment }) => {
-  // const onChange = useCallback(
-  //   (event: ChangeEvent<HTMLInputElement>) => {
-  //     const updatedComment = { ...comment, body: event.target.value };
-  //     setComment(updatedComment);
-  //   },
-  //   [comment, setComment]
-  // );
+export const CommentItem: FunctionComponent<CommentItemProps> = (props) => {
+  const [comment, setComment] = useRecoilState(commentState(props));
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const newComment = { ...comment!, body: event.target.value };
+      setComment(newComment);
+    },
+    [comment, setComment]
+  );
+
+  if (comment === undefined) {
+    throw new Error("Uncinstent state");
+  }
 
   return (
     <Card marginTop="2" >
       <CardText text={comment.name} size="small" />
       <CardDivider marginBottom="2" />
-      <CardText text={comment.body} size="small" />
-      {/* <Input defaultValue={comment.body} onChange={onChange} />  */}
+      <Input defaultValue={comment.body} onChange={onChange} />
     </Card >
   );
 }
