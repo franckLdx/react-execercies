@@ -1,6 +1,6 @@
 import { selector, selectorFamily } from "recoil";
 import { UsersApi } from "../../api/users";
-import { currentUserIdAtom, User } from "./atoms";
+import { currentUserIdState, User } from "./atoms";
 
 export const usersState = selector<User[]>({
   key: "usersList",
@@ -22,7 +22,7 @@ export const userByIdState = selectorFamily<User | undefined, number>({
 export const currentUserState = selector<User | undefined>({
   key: "currentUser",
   get({ get }) {
-    const currentUserId = get(currentUserIdAtom);
+    const currentUserId = get(currentUserIdState);
     if (currentUserId === undefined) {
       return undefined;
     }

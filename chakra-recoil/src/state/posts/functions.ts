@@ -1,6 +1,7 @@
 import { selector, selectorFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
-import { filterPostsState, loadedPostsDateState, Post } from "./atoms";
+import { Post } from "../../model";
+import { filterPostsState, loadedPostsDateState } from "./atoms";
 
 export const postsState = selector<Post[]>({
   key: "postsList",

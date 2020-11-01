@@ -6,11 +6,12 @@ import { commentState } from '../../../state/comments';
 
 interface CommentItemProps {
   postId: number;
-  commentName: string;
+  commentId: number;
 }
 
 export const CommentItem: FunctionComponent<CommentItemProps> = (props) => {
   const [comment, setComment] = useRecoilState(commentState(props));
+
   const onChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
       const newComment = { ...comment!, body: event.target.value };

@@ -1,11 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import { useRecoilValue } from 'recoil';
 import { AppBorder } from '../../../sharedComponents/AppBorder';
-import { currentUserIdAtom } from '../../../state/users/atoms';
+import { currentUserIdState } from '../../../state/users/atoms';
 import { UserCard } from '../UserCard';
 
 export const CurrentUser: FunctionComponent = () => {
-  const userId = useRecoilValue(currentUserIdAtom);
+  const userId = useRecoilValue(currentUserIdState);
   return (
     <UserBorder>
       {userId !== undefined && <UserCard userId={userId} />}

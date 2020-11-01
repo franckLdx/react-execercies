@@ -17,7 +17,7 @@ export const Comments: FunctionComponent<CommentsProps> = ({ postId }) => {
           <CommentItem
             key={comment.name}
             postId={postId}
-            commentName={comment.name}
+            commentId={comment.id}
           />)
       }
     </>

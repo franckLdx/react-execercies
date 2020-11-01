@@ -4,8 +4,8 @@ import PseudoBox, { PseudoBoxProps } from "@chakra-ui/core/dist/PseudoBox";
 import Text from "@chakra-ui/core/dist/Text";
 import { UserInfo } from "./UserInfo";
 import { AppDivider } from "../../../sharedComponents/AppDivider";
-import { Post } from "../../../state/posts/atoms";
 import { getPostPageUrl } from "../../../routes";
+import { Post } from "../../../model";
 
 type PostItemProps = {
   post: Post;

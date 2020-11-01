@@ -1,11 +1,8 @@
-import { get } from "./misc";
+import { Post } from "../model";
+import { Comment } from "../state/comments/atoms";
+import { get, put } from "./misc";
 
-interface PostPayload {
-  id: number;
-  title: string;
-  body: string;
-  userId: number;
-}
+type PostsPayload = Post[];
 
 interface CommentPayload {
   postId: number,
@@ -17,17 +14,28 @@ interface CommentPayload {
 
 
 export const PostsApi = {
-  async getAll(): Promise<PostPayload[]> {
-    return await get("posts", `Failed to load posts`);
+  async getAll(): Promise<Post[]> {
+    return await get<PostsPayload>("posts", `Failed to load posts`);
   },
-  async get(postId: number): Promise<PostPayload> {
-    const url = getPostUrl(postId);
-    return await get(url, `Failed to load post ${postId}`);
+
+  async getComments(postId: number): Promise<Comment[]> {
+    const url = getCommentsUrl(postId);
+    const commentsPayload = await get<CommentPayload[]>(url, `Failed to load post comments of post ${postId}`);
+    return mapToComments(commentsPayload);
   },
-  async getComments(postId: number): Promise<CommentPayload[]> {
-    const url = `${getPostUrl(postId)}/comments`;
-    return await get(url, `Failed to load post comments of post ${postId}`);
-  }
+
+  async update(postId: number, comments: Comment[]): Promise<Comment[]> {
+    const url = getCommentsUrl(postId);
+    const commentsPayload = await put<CommentPayload[]>(url, comments, `Failed to update post comments of post ${postId}`);
+    return mapToComments(commentsPayload);
+  },
+
 };
 
 const getPostUrl = (postId: number) => `posts/${postId}`;
+
+const getCommentsUrl = (postId: number) => `${getPostUrl(postId)}/comments`;
+
+const mapToComments = (commentsPayload: CommentPayload[]) => commentsPayload.map(mapToComment);
+
+const mapToComment = ({ id, name, body, email }: CommentPayload): Comment => ({ id, name, body, email })
