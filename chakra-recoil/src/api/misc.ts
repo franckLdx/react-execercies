@@ -1,6 +1,19 @@
 
 const serverUrl = 'https://jsonplaceholder.typicode.com';
 
+interface TraficItem {
+  line: string;
+  slug: string;
+  title: string;
+  message: string;
+}
+
+interface Trafic {
+  metros: TraficItem;
+  rers: TraficItem;
+  tramways: TraficItem;
+}
+
 export async function get<RETURN_TYPE>(resourceUrl: string, errMessage: string): Promise<RETURN_TYPE> {
   const response = await fetch(`${serverUrl}/${resourceUrl}`)
   if (!response.ok) {
