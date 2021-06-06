@@ -2,5 +2,6 @@
   "email": "Email",
   "password": "Mot de passe",
   "fillThis": "Veuillez remplir ce champ",
-  "toggleColorMode": "Changer le thème de la couleur"
+  "LightColorMode": "Thème claire",
+  "DarkColorMode": "Thème sombre"
 }

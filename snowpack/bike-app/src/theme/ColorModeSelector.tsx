@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo } from 'react';
 
-import { Box, Switch, useColorMode, Text } from '@chakra-ui/react';
+import { Switch, useColorMode, Text, HStack } from '@chakra-ui/react';
 import { useCommonTranslation } from '../common/translation';
 
 const ColorModeSwitcher: FunctionComponent = () => {
@@ -12,13 +12,14 @@ const ColorModeSwitcher: FunctionComponent = () => {
 
 export const ColorModeSelector: FunctionComponent = () => {
   const translate = useCommonTranslation();
-  const text = translate('toggleColorMode');
+  const ligthThemeText = translate('LightColorMode');
+  const darkThemeText = translate('DarkColorMode');
+
   return (
-    <Box>
-      <Text display="inline" marginRight="10px">
-        {text}
-      </Text>
+    <>
+      <Text>{ligthThemeText}</Text>
       <ColorModeSwitcher />
-    </Box>
+      <Text>{darkThemeText}</Text>
+    </>
   );
 };

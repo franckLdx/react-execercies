@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
 import { Box } from '@chakra-ui/react';
-import { Selectors } from './Selectors';
 
 export const Background: FunctionComponent = ({ children }) => {
   return (
@@ -15,7 +14,6 @@ export const Background: FunctionComponent = ({ children }) => {
       backgroundSize="contain"
       p={0}
     >
-      <Selectors />
       {children}
     </Box>
   );

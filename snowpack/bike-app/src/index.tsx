@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { ErrorBoundary } from './error/ErrorBoundary';
 import { AppTheme } from './theme';
-import App from './App';
+import App from './app/App';
 import { RecoilRoot } from 'recoil';
 
 import './i18n';
