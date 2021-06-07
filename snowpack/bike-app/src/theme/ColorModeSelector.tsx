@@ -16,10 +16,10 @@ export const ColorModeSelector: FunctionComponent = () => {
   const darkThemeText = translate('DarkColorMode');
 
   return (
-    <>
-      <Text>{ligthThemeText}</Text>
+    <HStack spacing="10px">
+      <Text whiteSpace="nowrap">{ligthThemeText}</Text>
       <ColorModeSwitcher />
-      <Text>{darkThemeText}</Text>
-    </>
+      <Text whiteSpace="nowrap">{darkThemeText}</Text>
+    </HStack>
   );
 };

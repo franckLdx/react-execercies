@@ -7,12 +7,12 @@ import { AppNav } from './AppNav';
 
 const App: FunctionComponent = () => (
   <Suspense fallback="loading">
-    <AppNav />
-    <Background>
-      <BrowserRouter>
+    <BrowserRouter>
+      <AppNav />
+      <Background>
         <AppRouter />
-      </BrowserRouter>
-    </Background>
+      </Background>
+    </BrowserRouter>
   </Suspense>
 );
 

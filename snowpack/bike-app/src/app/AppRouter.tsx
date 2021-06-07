@@ -1,18 +1,22 @@
-import { Flex } from '@chakra-ui/react';
 import React, { FunctionComponent } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
 import { useRecoilValue } from 'recoil';
-import { Login } from '../login';
 import { isUserLogged } from '../login/data';
+const Login = React.lazy(() => import('../login'));
 
 export const AppRouter: FunctionComponent = () => {
   const isLogged = useRecoilValue(isUserLogged);
   if (!isLogged) {
-    return (
-      <>
-        <Login />
-      </>
-    );
+    return <Login />;
   }
-  return <p>APP</p>;
+  return (
+    <Switch>
+      <Route exact path="/">
+        HOME
+      </Route>
+      <Route path="/foo">FOO</Route>
+      <Route path="/bar">BAR</Route>
+    </Switch>
+  );
 };

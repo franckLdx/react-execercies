@@ -5,7 +5,7 @@ import { LanguageSelector } from '../i18n';
 import { ColorModeSelector } from '../theme/ColorModeSelector';
 
 export const AppOptions: FunctionComponent = () => (
-  <HStack>
+  <HStack spacing="20px">
     <LanguageSelector />
     <ColorModeSelector />
   </HStack>

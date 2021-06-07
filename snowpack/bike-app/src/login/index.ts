@@ -1,2 +1,3 @@
-export { Login } from './Login';
-export * from './data'
+import { Login } from './Login';
+
+export default Login;
