@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react';
 
 import { Switch, useColorMode, Text, HStack } from '@chakra-ui/react';
-import { useCommonTranslation } from '../common/translation';
+import { useCommonTranslation } from '../../common/translation';
 
 const ColorModeSwitcher: FunctionComponent = () => {
   const { colorMode, toggleColorMode } = useColorMode();

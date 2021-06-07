@@ -2,11 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { ChakraProvider, ColorModeScript } from '@chakra-ui/react';
 import { ErrorBoundary } from './error/ErrorBoundary';
-import { AppTheme } from './theme';
+import { AppTheme } from './app/theme';
 import App from './app/App';
 import { RecoilRoot } from 'recoil';
 
-import './i18n';
+import './app/i18n';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -45,6 +45,7 @@ export const LoginPassword: FunctionComponent<LoginPasswordProps> = ({
         isMissing={isMissing}
         placeholder={translate('common:password')}
         onChange={onChange}
+        testId="PasswordInput"
       />
       <InputRightElement height="100%" onClick={toggleShowPassword}>
         <IconButton aria-label="view password" icon={currentIcon} />

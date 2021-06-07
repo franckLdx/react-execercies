@@ -14,6 +14,7 @@ interface LoginInputProps {
   autoFocus?: boolean;
   isMissing: boolean;
   onChange: (newValue: string) => void;
+  testId: string;
 }
 
 export const LoginInput: FunctionComponent<LoginInputProps> = ({
@@ -22,6 +23,7 @@ export const LoginInput: FunctionComponent<LoginInputProps> = ({
   autoFocus,
   placeholder,
   onChange,
+  testId,
 }) => {
   const inputRef = createRef<HTMLInputElement>();
 
@@ -39,6 +41,7 @@ export const LoginInput: FunctionComponent<LoginInputProps> = ({
   return (
     <FillThisTooltip isMissing={isMissing}>
       <Input
+        data-testId={testId}
         autoFocus={autoFocus}
         ref={inputRef}
         type={type}

@@ -19,6 +19,7 @@ export const LoginEmail: FunctionComponent<LoginEmailProps> = ({
       isMissing={isMissing}
       placeholder={translate('common:email')}
       onChange={onChange}
+      testId="EmailInput"
     />
   );
 };
