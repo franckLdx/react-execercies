@@ -41,7 +41,7 @@ export const LoginInput: FunctionComponent<LoginInputProps> = ({
   return (
     <FillThisTooltip isMissing={isMissing}>
       <Input
-        data-testId={testId}
+        data-testid={testId}
         autoFocus={autoFocus}
         ref={inputRef}
         type={type}

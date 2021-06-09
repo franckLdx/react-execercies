@@ -3,7 +3,7 @@ import React, { FunctionComponent, memo } from 'react';
 import { Center, Box } from '@chakra-ui/react';
 
 export const LoginContainer: FunctionComponent = memo(({ children }) => (
-  <Center height="95%" data-testId="LoginScreen">
+  <Center height="95%" data-testid="LoginScreen">
     <Box
       p={2}
       width="full"
