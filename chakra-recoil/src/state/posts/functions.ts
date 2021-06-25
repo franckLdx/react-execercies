@@ -1,14 +1,11 @@
 import { selector, selectorFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
 import { Post } from "../../model";
-import { filterPostsState, loadedPostsDateState } from "./atoms";
+import { filterPostsState } from "./atoms";
 
 export const postsState = selector<Post[]>({
   key: "postsList",
-  async get({ get }) {
-    get(loadedPostsDateState);
-    return await PostsApi.getAll();
-  },
+  get: async () => await PostsApi.getAll(),
 });
 
 export const filteredPostsState = selector<Post[]>({
@@ -23,7 +20,7 @@ export const filteredPostsState = selector<Post[]>({
 export const postByIdState = selectorFamily<Post | undefined, number>({
   key: "postById",
   get(postId) {
-    return async ({ get }) => {
+    return ({ get }) => {
       const posts = get(postsState);
       return posts.find(post => post.id === postId);
     }
