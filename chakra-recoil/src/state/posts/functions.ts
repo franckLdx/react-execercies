@@ -16,11 +16,11 @@ export const postsState2 = selectorFamily<Post[], number>({
 
 export const filteredPostsState = selector<Post[]>({
   key: "postsFiltered",
-  async get({ get }) {
+  get({ get }) {
     const posts = get(postsState);
     const filter = canonicalString(get(filterPostsState));
     return filter === undefined ? posts : posts.filter(post => canonicalString(post.title)?.includes(filter))
-  },
+  }
 });
 
 export const postByIdState = selectorFamily<Post | undefined, number>({

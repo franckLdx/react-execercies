@@ -11,7 +11,7 @@ export const Filter: FunctionComponent = () => {
   );
 
   return (
-    <Input placeholder="Search for a title" onChange={onChange} defaultValue={filter} />
+    <Input placeholder="Search for a title" onChange={onChange} value={filter} />
   );
 };
 

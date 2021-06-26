@@ -12,7 +12,9 @@ export type ReloadProps = Pick<BoxProps, 'marginRight'>;
 export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
   const [rawloadedDate, setLoadedDate] = useRecoilState(loadedPostsDateState);
   const reload = useCallback(
-    () => setLoadedDate(new Date()),
+    () => {
+      setLoadedDate(new Date())
+    },
     [setLoadedDate]
   );
   const formattedLoadedDate = useMemo(
