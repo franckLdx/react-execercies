@@ -4,4 +4,4 @@ export const filterPostsState = atom<string | undefined>({ key: "postsFilter", d
 
 export const loadedPostsDateState = atom<Date>({ key: "loadedPostsDate", default: new Date() });
 
-export const postsCountState = atom<number>({ key: 'postsCount', default: 0 })
+// export const postsRequestIdState = atom<number>({ key: 'postsRequestId', default: 0 })
