@@ -45,3 +45,17 @@ const canonicalString = (value: string | null | undefined) => value?.trim().toLo
 //     return filter === undefined ? posts : posts.filter(post => canonicalString(post.title)?.includes(filter))
 //   },
 // });
+
+// export const postsAtom = atom<Post[]>({
+//   key: "postsAtom",
+//   default: []
+// })
+
+// export const useLoadPost = () => useRecoilCallback(
+//     ({ set }) => async () => {
+//       const posts = await PostsApi.getAll();
+//       set(postsAtom, posts);
+//       set(loadedPostsDateState, new Date())
+//     },
+//     []
+//   )

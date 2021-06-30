@@ -4,9 +4,7 @@ import { currentUserIdState, User } from "./atoms";
 
 export const usersState = selector<User[]>({
   key: "usersList",
-  async get() {
-    return await UsersApi.getAll();
-  },
+  get: async () => await UsersApi.getAll(),
 });
 
 export const userByIdState = selectorFamily<User | undefined, number>({
