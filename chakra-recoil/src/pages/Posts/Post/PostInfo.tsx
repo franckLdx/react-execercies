@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo } from 'react';
 import { Card, CardText, CardDivider } from '../../../sharedComponents/Card';
-import { Post } from '../../../model';
+import { Post } from '../../../state';
 import { UserInfo } from './UserInfo';
 
 interface PostInfoProps {

@@ -1,12 +1,6 @@
 import { AtomEffect, atomFamily } from "recoil";
 import { PostsApi } from "../../api/posts";
-
-export interface Comment {
-  id: number;
-  name: string,
-  body: string,
-  email: string,
-}
+import { Comment } from './definitions'
 
 function commentEffetHOF(postId: number): AtomEffect<Comment[]> {
   return ({ onSet }) => {
@@ -22,11 +16,9 @@ function commentEffetHOF(postId: number): AtomEffect<Comment[]> {
   };
 }
 
-
-
 export const commentsState = atomFamily<Comment[], number>({
   key: 'comments',
-  default: PostsApi.getComments,
+  default: async postId => await PostsApi.getComments(postId),
   effects_UNSTABLE: postId => [commentEffetHOF(postId)]
 });
 

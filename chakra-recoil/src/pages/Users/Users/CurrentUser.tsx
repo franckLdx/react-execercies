@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { useRecoilValue } from 'recoil';
 import { AppBorder } from '../../../sharedComponents/AppBorder';
-import { currentUserIdState } from '../../../state/users/atoms';
+import { currentUserIdState } from '../../../state/users/currentUser';
 import { UserCard } from '../UserCard';
 
 export const CurrentUser: FunctionComponent = () => {

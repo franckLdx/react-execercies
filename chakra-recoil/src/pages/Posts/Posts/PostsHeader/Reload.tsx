@@ -5,7 +5,7 @@ import Button from "@chakra-ui/core/dist/Button";
 import Icon from "@chakra-ui/core/dist/Icon";
 import Text from "@chakra-ui/core/dist/Text";
 import { format } from "date-fns";
-import { loadedPostsDateState } from "../../../../state/posts/atoms";
+import { loadedPostsDateState } from "../../../../state";
 
 export type ReloadProps = Pick<BoxProps, 'marginRight'>;
 

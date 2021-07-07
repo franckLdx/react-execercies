@@ -1,7 +1,7 @@
 import React, { FunctionComponent, memo, useCallback } from "react";
 import { useRecoilValue } from "recoil";
 import { SimpleItem } from "../../../../sharedComponents/SimpleList";
-import { userByIdState } from "../../../../state/users";
+import { userByIdState } from "../../../../state";
 import { TextItem } from "./TextItem";
 
 interface UserItemProps {

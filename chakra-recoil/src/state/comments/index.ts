@@ -1,2 +1,3 @@
-export { commentsState as commentsAtom } from './atoms';
-export { commentState } from './functions';
+export * from './comment'
+export * from './comments'
+export * from './definitions'

@@ -1,5 +1,4 @@
-import { Post } from "../model";
-import { Comment } from "../state/comments/atoms";
+import { Post, Comment } from "../state";
 import { get, put } from "./misc";
 
 type PostsPayload = Post[];
@@ -11,7 +10,6 @@ interface CommentPayload {
   email: string,
   body: string,
 }
-
 
 export const PostsApi = {
   async getAll(): Promise<Post[]> {

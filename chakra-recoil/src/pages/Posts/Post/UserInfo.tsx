@@ -3,7 +3,7 @@ import { useRecoilValueLoadable } from 'recoil';
 import { Link } from 'react-router-dom';
 import { getUserPageUrl } from '../../../routes';
 import { CardText } from '../../../sharedComponents/Card';
-import { usersState } from '../../../state/users/atoms';
+import { usersFamilyState } from '../../../state';
 import { CircularProgress } from '@chakra-ui/core';
 
 interface UserInfoProps {
@@ -11,7 +11,7 @@ interface UserInfoProps {
 }
 
 export const UserInfo: FunctionComponent<UserInfoProps> = memo(({ userId }) => {
-  const user = useRecoilValueLoadable(usersState(userId));
+  const user = useRecoilValueLoadable(usersFamilyState(userId));
   const userLink = useMemo(() => getUserPageUrl(userId), [userId]);
 
   switch (user.state) {

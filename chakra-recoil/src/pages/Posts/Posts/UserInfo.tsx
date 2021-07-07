@@ -1,6 +1,6 @@
 import React, { FunctionComponent, memo } from 'react';
 import { useRecoilValueLoadable } from 'recoil';
-import { usersState } from '../../../state/users/atoms';
+import { usersFamilyState } from '../../../state';
 import { CircularProgress } from '@chakra-ui/core';
 import Text from "@chakra-ui/core/dist/Text";
 
@@ -9,7 +9,7 @@ interface UserInfoProps {
 }
 
 export const UserInfo: FunctionComponent<UserInfoProps> = memo(({ userId }) => {
-  const user = useRecoilValueLoadable(usersState(userId));
+  const user = useRecoilValueLoadable(usersFamilyState(userId));
 
   switch (user.state) {
     case "loading":

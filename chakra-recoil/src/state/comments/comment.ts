@@ -1,5 +1,6 @@
 import { selectorFamily } from "recoil";
-import { Comment, commentsState } from "./atoms";
+import { commentsState } from "./comments";
+import { Comment } from "./definitions";
 
 type CommentStateProps = Readonly<{
   postId: number,

@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useCallback, useEffect } from 'react';
 import { useRecoilValue, useRecoilState } from 'recoil';
 import { SipmleList, SipmleListProps } from '../../../../sharedComponents/SimpleList';
-import { usersState } from '../../../../state/users';
-import { currentUserIdState } from '../../../../state/users/atoms';
+import { currentUserIdState, usersState } from '../../../../state';
 import { UserItem } from './UserItem';
 
 export type UsersListProps = SipmleListProps;

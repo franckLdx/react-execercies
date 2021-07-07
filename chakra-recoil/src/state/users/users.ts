@@ -1,6 +1,11 @@
-import { selector, selectorFamily } from "recoil";
+import { atomFamily, selector, selectorFamily } from "recoil";
 import { UsersApi } from "../../api/users";
-import { currentUserIdState, User } from "./atoms";
+import { User } from "./definitions";
+
+export const usersFamilyState = atomFamily<User, number>({
+  key: 'users',
+  default: async userId => UsersApi.get(userId)
+})
 
 export const usersState = selector<User[]>({
   key: "usersList",
@@ -14,16 +19,5 @@ export const userByIdState = selectorFamily<User | undefined, number>({
       const users = get(usersState);
       return users.find(user => user.id === userId);
     }
-  },
-});
-
-export const currentUserState = selector<User | undefined>({
-  key: "currentUser",
-  get({ get }) {
-    const currentUserId = get(currentUserIdState);
-    if (currentUserId === undefined) {
-      return undefined;
-    }
-    return get(userByIdState(currentUserId));
   },
 });
