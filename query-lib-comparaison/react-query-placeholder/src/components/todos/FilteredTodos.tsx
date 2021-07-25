@@ -3,16 +3,16 @@ import React, { FC } from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
 import { Loading } from '../Loading';
 import { Todo } from './Todo';
-import { useFilteredTodos } from '../../service/placeHolder/todos';
+import { useFilteredTodos } from '../../services/todos';
 
 export const FilteredTodos: FC = () => {
-  const { data: todos, isLoading, error } = useFilteredTodos();
+  const { data: todos, isLoading, error, isFetching } = useFilteredTodos();
 
   if (error) {
     throw error;
   }
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return <Loading />
   }
 

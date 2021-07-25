@@ -1,9 +1,9 @@
-import React, { FC, useMemo } from 'react'
+import React, { ChangeEvent, FC, useCallback, useMemo } from 'react'
 
 import { Box, Text } from '@chakra-ui/layout';
 import { Checkbox, Divider, Skeleton } from '@chakra-ui/react';
 import { User } from './User';
-import { useTodos } from '../../service/placeHolder/todos';
+import { useTodos, useUpdateTodo } from '../../services/todos';
 
 const TodoContainer: FC = ({ children }) => (
   <article>
@@ -18,24 +18,35 @@ interface TodoProps {
 }
 
 export const Todo: FC<TodoProps> = ({ todoId }) => {
-  const { data: todos, error, status } = useTodos();
+  const loadTodo = useTodos();
   const todo = useMemo(
-    () => todos?.find(todo => todo.id === todoId),
-    [todoId, todos]
+    () => loadTodo.data?.find(todo => todo.id === todoId),
+    [loadTodo.data, todoId]
   )
 
-  // const [updatePost, { error }] = useUpdateCompletedMutation();
+  const updateTodo = useUpdateTodo();
 
-  // const onCompletedChange = useCallback(
-  //   (event: ChangeEvent<HTMLInputElement>) => updatePost({ todoId, completed: event.target.checked }),
-  //   [todoId, updatePost]
-  // );
+  const onCompletedChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      event.preventDefault();
+      if (!todo) {
+        return;
+      }
+      const updatedTodo = { id: todo.id, completed: !todo.completed };
+      updateTodo.mutate(updatedTodo);
+    },
+    [todo, updateTodo]
+  );
 
-  if (error) {
-    throw error;
+  if (loadTodo.error) {
+    throw loadTodo.error;
   }
 
-  if (status === "loading") {
+  if (updateTodo.error) {
+    throw updateTodo.error;
+  }
+
+  if (loadTodo.status === "loading" || updateTodo.status === "loading") {
     return <Skeleton height="160px"><TodoContainer /></Skeleton>
   }
 
@@ -58,7 +69,7 @@ export const Todo: FC<TodoProps> = ({ todoId }) => {
       <Checkbox
         marginTop="10px"
         isChecked={todo.completed}
-      // onChange={onCompletedChange}
+        onChange={onCompletedChange}
       >
         <Text fontSize="2xl">Done</Text>
       </Checkbox >

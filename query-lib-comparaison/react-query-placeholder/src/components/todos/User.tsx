@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 
 import { Text } from '@chakra-ui/layout';
-import { useUserById } from '../../service/placeHolder/users';
+import { useUserById } from '../../services';
 
 interface UserProps {
   userId: number

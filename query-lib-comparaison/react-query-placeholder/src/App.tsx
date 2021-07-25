@@ -8,7 +8,6 @@ export const App: FC = () => (
     <Box margin="20px">
       <TodoFilter />
       <Divider marginY="10px" />
-      {/* <Todos /> */}
       <Todos />
     </Box>
   </main>

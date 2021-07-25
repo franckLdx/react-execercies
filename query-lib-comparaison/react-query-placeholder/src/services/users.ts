@@ -1,13 +1,19 @@
 import { useQuery } from "react-query";
-import { myFetch } from "./common";
-import { User } from "./model";
+import { get } from "./fetchTools";
+
+export interface User {
+  id: number,
+  name: string,
+  userName: string,
+  email: string,
+}
 
 export const USER_KEY = 'user';
 
 export const useUserById = (userId: number) => useQuery<User>(
   [USER_KEY, userId],
   async () => {
-    const response = await myFetch(`users/${userId}`)
+    const response = await get(`users/${userId}`)
     return {
       id: response.id,
       name: response.name,
