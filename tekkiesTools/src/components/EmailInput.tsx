@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { AtSignIcon } from '@chakra-ui/icons';
-import { InputGroup, InputLeftAddon, Input } from '@chakra-ui/react';
+import { placeholderForInput } from '../theme';
+import { Input } from '@chakra-ui/react';
 
 export const EmailInput: FC = () => (
-  <InputGroup>
-    <InputLeftAddon>
-      <AtSignIcon />
-    </InputLeftAddon>
-    <Input placeholder="email" type="email" />
-  </InputGroup>
+  <Input
+    placeholder="Email"
+    type="email"
+    variant="login"
+    _placeholder={placeholderForInput}
+  />
 );

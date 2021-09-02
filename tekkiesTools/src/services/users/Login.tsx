@@ -1,18 +1,20 @@
 import React, { FC } from 'react';
 
-import { VStack } from '@chakra-ui/react';
+import { Button, Center, Container, Heading, VStack } from '@chakra-ui/react';
 import { EmailInput } from '../../components/EmailInput';
 import { PasswordInput } from '../../components/PasswordInput';
 
 export const Login: FC = () => (
-  <VStack
-    layerStyle="base"
-    spacing="15px"
-    padding="25px"
-    width="full"
-    maxWidth="800px"
-  >
-    <EmailInput />
-    <PasswordInput />
-  </VStack>
+  <Container maxW="container.md" layerStyle="container">
+    <Center marginTop="5">
+      <Heading color="black" style={{ transform: 'rotate(-5deg)' }}>
+        Connection
+      </Heading>
+    </Center>
+    <VStack spacing="15px" paddingY="5">
+      <EmailInput />
+      <PasswordInput />
+      <Button width="100%">Login</Button>
+    </VStack>
+  </Container>
 );
