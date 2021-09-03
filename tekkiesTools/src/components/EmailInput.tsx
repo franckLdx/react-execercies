@@ -1,13 +1,13 @@
 import React, { FC } from 'react';
 
-import { placeholderForInput } from '../theme';
+import { inputTheme, placeholderInputTheme } from '../theme';
 import { Input } from '@chakra-ui/react';
 
 export const EmailInput: FC = () => (
   <Input
     placeholder="Email"
     type="email"
-    variant="login"
-    _placeholder={placeholderForInput}
+    _placeholder={placeholderInputTheme}
+    {...inputTheme.baseStyle}
   />
 );

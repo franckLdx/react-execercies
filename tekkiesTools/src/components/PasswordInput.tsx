@@ -7,7 +7,7 @@ import {
   InputRightAddon,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
-import { placeholderForInput } from '../theme';
+import { inputTheme, placeholderInputTheme } from '../theme';
 
 export const PasswordInput: FC = () => {
   const [view, setView] = useState(false);
@@ -27,7 +27,8 @@ export const PasswordInput: FC = () => {
       <Input
         placeholder="Mot de passe"
         type={inputType}
-        _placeholder={placeholderForInput}
+        _placeholder={placeholderInputTheme}
+        {...inputTheme.baseStyle}
       />
       <InputRightAddon>{icon}</InputRightAddon>
     </InputGroup>
