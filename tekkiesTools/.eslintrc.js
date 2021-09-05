@@ -27,5 +27,6 @@ module.exports = {
       },
     ],
     'react-hooks/rules-of-hooks': 'error',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

@@ -12,7 +12,7 @@ export const App: FC = () => {
         <Flex direction="row-reverse">
           <ColorModeButton />
         </Flex>
-        <Center w="100%" h="85%">
+        <Center w="100%" h="85%" js>
           <Login />
         </Center>
       </Box>

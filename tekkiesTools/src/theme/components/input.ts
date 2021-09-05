@@ -1,12 +1,12 @@
-import { ComponentSingleStyleConfig, CSSObject } from '@chakra-ui/react';
+import { CSSObject } from '@chakra-ui/react';
 
-export const placeholderInputTheme: CSSObject = {
+const placeholder: CSSObject = {
   fontSize: '1.05em',
   fontWeight: 'bold',
   color: 'gray.400',
 };
 
-export const borderInputTheme = {
+const border: CSSObject = {
   borderColor: 'gray.400',
   borderStyle: 'solid',
   borderWidth: '2px',
@@ -14,14 +14,10 @@ export const borderInputTheme = {
 
 export const inputTheme = {
   baseStyle: {
-    ...borderInputTheme,
-    color: 'black',
-  },
-  variants: {
-    outline: {
-      borderWidth: '5',
-      borderStyle: 'solid',
-      borderColor: 'red',
+    field: {
+      ...border,
+      color: 'black',
+      _placeholder: placeholder,
     },
   },
 };

@@ -8,8 +8,6 @@ import { colorMode } from './colorMode';
 import { layerStyles } from './layerStyle';
 import { buttonTheme, containerTheme, inputTheme } from './components';
 
-export { placeholderInputTheme, inputTheme } from './components';
-
 const colorScheme = withDefaultColorScheme({
   colorScheme: 'teal',
 });
