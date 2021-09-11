@@ -5,6 +5,12 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { theme } from './theme';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
+if (process.env.NODE_ENV === 'development') {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  // const { worker } = require('./mocks/browser');
+  import('./mocks/browser').then(({ worker }) => worker.start());
+}
+
 const queryClient = new QueryClient();
 
 ReactDOM.render(
@@ -17,3 +23,4 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root'),
 );
+

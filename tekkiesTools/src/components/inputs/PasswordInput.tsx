@@ -11,13 +11,13 @@ import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 interface PasswordInputProps {
   password: string;
   setPassword: (password: string) => void;
-  disabled: boolean
+  disabled: boolean;
 }
 
 export const PasswordInput: FC<PasswordInputProps> = ({
   password,
   setPassword,
-  disabled
+  disabled,
 }) => {
   const [view, setView] = useState(false);
   const onClick = () => setView(!view);
