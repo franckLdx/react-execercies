@@ -17,15 +17,19 @@ export const Login: FC = () => {
 
   const isValid = email.length && password.length;
 
-  const { error, isLoading, refetch } = useLogin(email, password);
+  const loginMutation = useLogin();
 
-  const onLogin = () => refetch();
+  const onLogin = () => loginMutation.mutate({ email, password });
+
+  const isAuthentificationFailed = [401, 404].includes(
+    loginMutation.error?.response?.status,
+  );
 
   useEffect(() => {
-    if (!isLoading && error && error?.response?.status !== 404) {
+    if (!!loginMutation.error && !isAuthentificationFailed) {
       throw new Error('Boom');
     }
-  }, [error, isLoading]);
+  }, [isAuthentificationFailed, loginMutation.error]);
 
   return (
     <Container maxW="container.md" layerStyle="container">
@@ -35,21 +39,25 @@ export const Login: FC = () => {
         </Heading>
       </Center>
       <VStack spacing="15px" paddingY="5">
-        <EmailInput disabled={isLoading} email={email} setEmail={setEmail} />
+        <EmailInput
+          disabled={loginMutation.isLoading}
+          email={email}
+          setEmail={setEmail}
+        />
         <PasswordInput
-          disabled={isLoading}
+          disabled={loginMutation.isLoading}
           password={password}
           setPassword={setPassword}
         />
         <Button
-          isLoading={isLoading}
+          isLoading={loginMutation.isLoading}
           onClick={onLogin}
           disabled={!isValid}
           width="100%"
         >
           Login
         </Button>
-        {!isLoading && error?.response?.status === 404 && (
+        {isAuthentificationFailed && (
           <Text color="red" fontWeight="bold">
             Email ou mot de passe invalide
           </Text>

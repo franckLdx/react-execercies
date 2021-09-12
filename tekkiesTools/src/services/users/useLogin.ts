@@ -1,28 +1,38 @@
-import { useQuery, UseQueryResult } from 'react-query';
-import axios from 'axios';
+import { useMutation, UseMutationResult } from 'react-query';
+import axios, { AxiosResponse } from 'axios';
+
+export interface LoginParam {
+  email: string;
+  password: string;
+}
+
+interface Token {
+  role: string;
+}
 
 interface LoginResult {
-  data?: string;
+  data?: Token;
   status: number;
   statusText: string;
 }
 
-const doLogin = async (
+export const doLogin = async (
   email: string,
   password: string,
 ): Promise<LoginResult> => {
-  const { data, status, statusText } = await axios.post('/user/login', {
+  const { data, status, statusText } = await axios.post<
+    LoginParam,
+    AxiosResponse<Token>
+  >('/user/login', {
     email,
     password,
   });
   return { data, status, statusText };
 };
 
-export const useLogin = (
-  email: string,
-  password: string,
-): UseQueryResult<LoginResult, any> =>
-  useQuery(['login', email, password], () => doLogin(email, password), {
-    staleTime: Infinity,
-    enabled: false,
-  });
+export const useLogin = (): UseMutationResult<
+  LoginResult,
+  any,
+  LoginParam,
+  any
+> => useMutation(({ email, password }: LoginParam) => doLogin(email, password));
