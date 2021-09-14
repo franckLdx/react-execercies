@@ -6,6 +6,7 @@ import { theme } from './theme';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { store } from './store';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 if (process.env.NODE_ENV === 'development') {
   import('./mocks/browser').then(({ worker }) => worker.start());
@@ -18,7 +19,9 @@ ReactDOM.render(
     <ChakraProvider theme={theme}>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <App />
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
         </Provider>
       </QueryClientProvider>
     </ChakraProvider>

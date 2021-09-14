@@ -2,6 +2,6 @@ export interface Token {
   role: string;
 }
 
-export interface Login {
+export interface LoginModel {
   token?: Token;
 }

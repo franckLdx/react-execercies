@@ -10,10 +10,13 @@ import {
 } from '@chakra-ui/react';
 import { EmailInput, PasswordInput } from '../../components';
 import { useLogin } from './useLogin';
+import { useHistory } from 'react-router-dom';
+import { HOME_URL } from '../routes';
 
 export const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const routerHistory = useHistory();
 
   const isValid = email.length && password.length;
 
@@ -30,6 +33,17 @@ export const Login: FC = () => {
       throw new Error('Boom');
     }
   }, [isAuthentificationFailed, loginMutation.error]);
+
+  useEffect(() => {
+    if (!loginMutation.isSuccess) {
+      return;
+    }
+    if (routerHistory.length > 1) {
+      routerHistory.goBack();
+    } else {
+      routerHistory.push(HOME_URL);
+    }
+  }, [loginMutation.isSuccess, routerHistory]);
 
   return (
     <Container maxW="container.md" layerStyle="container">

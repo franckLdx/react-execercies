@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Login, Token } from './model';
+import { LoginModel, Token } from './model';
 
-const initialState: Login = {};
+const initialState: LoginModel = {};
 
 const slice = createSlice({
   name: 'login',

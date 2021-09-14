@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 
 import { Box, Center, Flex } from '@chakra-ui/react';
 import { ColorModeButton } from './components/ColorModeButton';
-import { Login, ErrorBoundary } from './features';
+import { ErrorBoundary } from './features';
+import { Routes } from './features/routes/Routes';
 
 export const App: FC = () => {
   return (
@@ -12,7 +13,7 @@ export const App: FC = () => {
           <ColorModeButton />
         </Flex>
         <Center w="100%" h="85%" js>
-          <Login />
+          <Routes />
         </Center>
       </Box>
     </ErrorBoundary>
