@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { Box, Center, Flex } from '@chakra-ui/react';
 import { ColorModeButton } from './components/ColorModeButton';
-import { Login, ErrorBoundary } from './services';
+import { Login, ErrorBoundary } from './features';
 
 export const App: FC = () => {
   return (

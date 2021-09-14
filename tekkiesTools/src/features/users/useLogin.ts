@@ -1,13 +1,12 @@
 import { useMutation, UseMutationResult } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
+import { Token } from './model';
+import { useDispatch } from 'react-redux';
+import { logged, exited } from './slice';
 
 export interface LoginParam {
   email: string;
   password: string;
-}
-
-interface Token {
-  role: string;
 }
 
 interface LoginResult {
@@ -35,4 +34,17 @@ export const useLogin = (): UseMutationResult<
   any,
   LoginParam,
   any
-> => useMutation(({ email, password }: LoginParam) => doLogin(email, password));
+> => {
+  const dispatch = useDispatch();
+  return useMutation(
+    ({ email, password }: LoginParam) => doLogin(email, password),
+    {
+      onSuccess(response) {
+        if (response.data) dispatch(logged({ token: response.data }));
+      },
+      onError() {
+        dispatch(exited());
+      },
+    },
+  );
+};
