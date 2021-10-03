@@ -46,37 +46,39 @@ export const Login: FC = () => {
   }, [loginMutation.isSuccess, routerHistory]);
 
   return (
-    <Container maxW="container.md" layerStyle="container">
-      <Center marginTop="5">
-        <Heading color="black" style={{ transform: 'rotate(-5deg)' }}>
-          Connection
-        </Heading>
-      </Center>
-      <VStack spacing="15px" paddingY="5">
-        <EmailInput
-          disabled={loginMutation.isLoading}
-          email={email}
-          setEmail={setEmail}
-        />
-        <PasswordInput
-          disabled={loginMutation.isLoading}
-          password={password}
-          setPassword={setPassword}
-        />
-        <Button
-          isLoading={loginMutation.isLoading}
-          onClick={onLogin}
-          disabled={!isValid}
-          width="100%"
-        >
-          Login
-        </Button>
-        {isAuthentificationFailed && (
-          <Text color="red" fontWeight="bold">
-            Email ou mot de passe invalide
-          </Text>
-        )}
-      </VStack>
-    </Container>
+    <Center h="100%">
+      <Container maxW="container.md" layerStyle="container">
+        <Center marginTop="5">
+          <Heading color="black" style={{ transform: 'rotate(-5deg)' }}>
+            Connection
+          </Heading>
+        </Center>
+        <VStack spacing="15px" paddingY="5">
+          <EmailInput
+            disabled={loginMutation.isLoading}
+            email={email}
+            setEmail={setEmail}
+          />
+          <PasswordInput
+            disabled={loginMutation.isLoading}
+            password={password}
+            setPassword={setPassword}
+          />
+          <Button
+            isLoading={loginMutation.isLoading}
+            onClick={onLogin}
+            disabled={!isValid}
+            width="100%"
+          >
+            Login
+          </Button>
+          {isAuthentificationFailed && (
+            <Text color="red" fontWeight="bold">
+              Email ou mot de passe invalide
+            </Text>
+          )}
+        </VStack>
+      </Container>
+    </Center>
   );
 };

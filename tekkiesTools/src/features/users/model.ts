@@ -1,5 +1,7 @@
+export type Role = 'advisor' | 'admin';
+
 export interface Token {
-  role: string;
+  role: Role;
 }
 
 export interface LoginModel {

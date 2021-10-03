@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Box, Center, Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { ColorModeButton } from './components/ColorModeButton';
 import { ErrorBoundary } from './features';
 import { Routes } from './features/routes/Routes';
@@ -12,9 +12,9 @@ export const App: FC = () => {
         <Flex direction="row-reverse">
           <ColorModeButton />
         </Flex>
-        <Center w="100%" h="85%" js>
+        <Box w="100%" h="85%" js>
           <Routes />
-        </Center>
+        </Box>
       </Box>
     </ErrorBoundary>
   );

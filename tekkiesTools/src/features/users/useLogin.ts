@@ -10,7 +10,7 @@ export interface LoginParam {
 }
 
 interface LoginResult {
-  data?: Token;
+  token?: Token;
   status: number;
   statusText: string;
 }
@@ -21,12 +21,12 @@ export const doLogin = async (
 ): Promise<LoginResult> => {
   const { data, status, statusText } = await axios.post<
     LoginParam,
-    AxiosResponse<Token>
+    AxiosResponse<{ token: Token }>
   >('/user/login', {
     email,
     password,
   });
-  return { data, status, statusText };
+  return { token: data.token, status, statusText };
 };
 
 export const useLogin = (): UseMutationResult<
@@ -40,7 +40,7 @@ export const useLogin = (): UseMutationResult<
     ({ email, password }: LoginParam) => doLogin(email, password),
     {
       onSuccess(response) {
-        if (response.data) dispatch(logged({ token: response.data }));
+        if (response.token) dispatch(logged({ token: response.token }));
       },
       onError() {
         dispatch(exited());
