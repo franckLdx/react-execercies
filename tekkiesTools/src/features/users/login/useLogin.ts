@@ -1,8 +1,8 @@
 import { useMutation, UseMutationResult } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
-import { Token } from './model';
+import { Token } from '../model';
 import { useDispatch } from 'react-redux';
-import { logged, exited } from './slice';
+import { logged, exited } from '../slice';
 
 export interface LoginParam {
   email: string;

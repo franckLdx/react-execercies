@@ -8,10 +8,10 @@ import {
   VStack,
   Text,
 } from '@chakra-ui/react';
-import { EmailInput, PasswordInput } from '../../components';
+import { EmailInput, PasswordInput } from '../../../components';
 import { useLogin } from './useLogin';
 import { useHistory } from 'react-router-dom';
-import { HOME_URL } from '../routes';
+import { HOME_URL } from '../../routes';
 
 export const Login: FC = () => {
   const [email, setEmail] = useState<string>('');
