@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { format } from 'date-fns';
+import { format, isWeekend } from 'date-fns';
 import { useQuery, UseQueryResult } from 'react-query';
 
 type Holidays = Record<string, string>;
@@ -23,3 +23,23 @@ export const isHolliday = (date: Date, holidays: Holidays): boolean => {
   const formatedDate = format(date, 'yyyy-MM-dd');
   return formatedDate in holidays;
 };
+
+export const isWorkingDate = (date: Date, holidays: Holidays): boolean =>
+  !isWeekend(date) && !isHolliday(date, holidays);
+
+export interface WorkingDate {
+  date: Date;
+  isWorking: boolean;
+}
+
+export const datesToWorkingDate = (
+  dates: Array<Date>,
+  holidays: Holidays,
+): Array<WorkingDate> =>
+  dates.reduce((acc, date) => {
+    const workingDay: WorkingDate = {
+      date,
+      isWorking: isWorkingDate(date, holidays),
+    };
+    return [...acc, workingDay];
+  }, [] as Array<WorkingDate>);

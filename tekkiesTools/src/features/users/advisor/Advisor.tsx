@@ -1,17 +1,21 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 
 import { Table, Th, Thead, Tr, Text, Skeleton } from '@chakra-ui/react';
 import { useGetDatesOFMonth } from '../../dates/datesOfMonth';
 import { Title } from './Title';
-import { useGetHolidays } from '../../dates';
+import { datesToWorkingDate, useGetHolidays } from '../../dates';
 import { format } from 'date-fns';
 
 export const Advisor: FC = () => {
   const today = new Date();
   const currentMonth = today.getMonth();
   const currentYear = today.getFullYear();
-  const days = useGetDatesOFMonth(currentMonth, currentYear);
   const { status, data, error } = useGetHolidays(currentYear);
+  const dates = useGetDatesOFMonth(currentMonth, currentYear);
+  const workingDates = useMemo(
+    () => (data ? datesToWorkingDate(dates, data) : []),
+    [data, dates],
+  );
 
   return (
     <>
@@ -20,9 +24,11 @@ export const Advisor: FC = () => {
         <Table mt="35px">
           <Thead>
             <Tr>
-              {days.map((day) => (
-                <Th key={day.toString()}>
-                  <Text fontSize="lg">{format(day, 'd')}</Text>
+              {workingDates.map(({ date, isWorking }) => (
+                <Th key={date.toString()}>
+                  <Text fontSize={isWorking ? 'xx-large' : 'small'}>
+                    {format(date, 'd')}
+                  </Text>
                 </Th>
               ))}
             </Tr>
