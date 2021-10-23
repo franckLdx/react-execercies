@@ -1,31 +1,41 @@
 import React, { FC } from 'react';
 
-import { Heading } from '@chakra-ui/react';
+import { Heading, HStack } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import fr from 'date-fns/locale/fr';
-import { MonthesSelector } from '../../dates/MonthSelector';
+import { MonthSelector } from '../../dates/MonthSelector';
+import { YearSelector } from '../../dates/YearSelector';
 
 interface TitleProps {
-  month: number;
-  year: number;
+  defaultMonth: number;
+  defaultYear: number;
+  onChange: (newParams: { month: number; year: number }) => void;
 }
 
-export const Title: FC<TitleProps> = ({ month, year }) => {
-  const date = new Date(year, month - 1, 1);
+export const Title: FC<TitleProps> = ({
+  defaultMonth,
+  defaultYear,
+  onChange,
+}) => {
+  const date = new Date(defaultYear, defaultMonth - 1, 1);
   const monthName = format(date, 'MMMM yyyy', { locale: fr });
   const article = monthName.startsWith('o') ? "d'" : 'de ';
 
   return (
-    <div>
-      <button>11</button>
-      <MonthesSelector defaulMonth={month} />
-    </div>
-  )
-  // return (
-  //   <Heading as="h3" size="lg">
-  //     CRA {article}{' '}
-  //     <div>
-  //     </div>
-  //   </Heading>
-  // );
+    <HStack>
+      <Heading as="h3" size="lg">
+        CRA&nbsp;{article}
+      </Heading>
+      <MonthSelector
+        defaulMonth={defaultMonth}
+        onChange={(newMonth) =>
+          onChange({ month: newMonth, year: defaultYear })
+        }
+      />
+      <YearSelector
+        defaulYear={defaultYear}
+        onChange={(newYear) => onChange({ month: defaultMonth, year: newYear })}
+      />
+    </HStack>
+  );
 };
