@@ -16,7 +16,7 @@ export const Advisor: FC = () => {
     status,
     error,
     data: workingDates,
-    isFetching
+    isFetching,
   } = useGetWorkingDatesOfMonth({ month: filter.month, year: filter.year });
 
   if (error) {
@@ -33,7 +33,7 @@ export const Advisor: FC = () => {
         defaultYear={filter.year}
         onChange={setFilter}
       />
-      <Skeleton isLoaded={status === 'success' || !isFetching}>
+      <Skeleton isLoaded={status === 'success' || !isFetching} height="40px">
         <Table mt="35px">
           <Thead>
             <Tr>
