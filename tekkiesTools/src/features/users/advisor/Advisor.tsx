@@ -1,21 +1,27 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC } from 'react';
 
 import { Table, Th, Thead, Tr, Text, Skeleton } from '@chakra-ui/react';
-import { useGetDatesOFMonth } from '../../dates/datesOfMonth';
 import { Title } from './Title';
-import { datesToWorkingDate, useGetHolidays } from '../../dates';
+import { useGetWorkingDatesOfMonth } from '../../dates';
 import { format } from 'date-fns';
+import { MonthesSelector } from '../../dates/MonthSelector';
 
 export const Advisor: FC = () => {
   const today = new Date();
-  const currentMonth = today.getMonth();
+  const currentMonth = today.getMonth() + 1;
   const currentYear = today.getFullYear();
-  const { status, data, error } = useGetHolidays(currentYear);
-  const dates = useGetDatesOFMonth(currentMonth, currentYear);
-  const workingDates = useMemo(
-    () => (data ? datesToWorkingDate(dates, data) : []),
-    [data, dates],
-  );
+  const {
+    status,
+    error,
+    data: workingDates,
+  } = useGetWorkingDatesOfMonth({ month: currentMonth, year: currentYear });
+
+  if (error) {
+    if (typeof 'error' === 'string') {
+      throw new Error(error as string);
+    }
+    throw error;
+  }
 
   return (
     <>
@@ -24,7 +30,7 @@ export const Advisor: FC = () => {
         <Table mt="35px">
           <Thead>
             <Tr>
-              {workingDates.map(({ date, isWorking }) => (
+              {workingDates?.map(({ date, isWorking }) => (
                 <Th key={date.toString()}>
                   <Text fontSize={isWorking ? 'xx-large' : 'small'}>
                     {format(date, 'd')}

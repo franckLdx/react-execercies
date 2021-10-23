@@ -1,6 +1,4 @@
-import { useMemo } from 'react';
-
-const getDatessOFMonth = (month: number, year: number): Date[] => {
+export const getDatesOFMonth = (month: number, year: number): Date[] => {
   const days: Date[] = [];
   const date = new Date(year, month, 1);
   while (date.getMonth() === month) {
@@ -9,6 +7,3 @@ const getDatessOFMonth = (month: number, year: number): Date[] => {
   }
   return days;
 };
-
-export const useGetDatesOFMonth = (month: number, year: number): Date[] =>
-  useMemo(() => getDatessOFMonth(month, year), [month, year]);
