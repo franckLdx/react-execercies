@@ -6,7 +6,7 @@ interface Credentials {
   password: string
 }
 
-const doLogin = async (credentials: Credentials): Promise<void> => {
+const doLogin = async (credentials: Credentials): Promise<string> => {
   var headers = new Headers();
   headers.append("Content-Type", "application/json");
   const response = await fetch(

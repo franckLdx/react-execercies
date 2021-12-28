@@ -1,14 +1,17 @@
-import { useState } from 'react'
-import { LoginForm } from './login'
+import { FC, useState } from 'react'
+import { loginContext, LoginForm, LoginInfo, TOKEN } from './login'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const App: FC = () => {
+  const [token, setToken] = useState<TOKEN>(undefined)
+  const loginInfo: LoginInfo = {
+    token, setToken
+  }
 
   return (
     <main className="App">
-      <LoginForm />
+      <loginContext.Provider value={loginInfo}>
+        {!token && <LoginForm />}
+      </loginContext.Provider>
     </main>
   )
 }
-
-export default App
