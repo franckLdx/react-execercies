@@ -17,7 +17,7 @@ export const MonthSelector: FC<MonthSelectorProps> = ({
     format(new Date(2021, month - 1), 'LLLL', { locale: fr });
 
   const getMonthOption = (month: number) => (
-    <option key={month} value={month}>
+    <option className="foo" key={month} value={month}>
       {getMonthName(month)}
     </option>
   );
@@ -31,7 +31,12 @@ export const MonthSelector: FC<MonthSelectorProps> = ({
   );
 
   return (
-    <Select defaultValue={defaulMonth} onChange={onChange} width={'inherit'}>
+    <Select
+      defaultValue={defaulMonth}
+      onChange={onChange}
+      width={'inherit'}
+      size="lg"
+    >
       {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(getMonthOption)}
     </Select>
   );

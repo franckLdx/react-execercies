@@ -28,7 +28,12 @@ export const YearSelector: FC<YearSelectorProps> = ({
   );
 
   return (
-    <Select defaultValue={defaulYear} onChange={onChange} width={'inherit'}>
+    <Select
+      defaultValue={defaulYear}
+      onChange={onChange}
+      width={'inherit'}
+      size="lg"
+    >
       {indexes.map((index) => getOption(2021 + index))}
     </Select>
   );

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-import { Heading, HStack } from '@chakra-ui/react';
+import { Text, HStack } from '@chakra-ui/react';
 import { format } from 'date-fns';
 import fr from 'date-fns/locale/fr';
 import { MonthSelector } from '../../dates/MonthSelector';
@@ -23,9 +23,7 @@ export const Title: FC<TitleProps> = ({
 
   return (
     <HStack>
-      <Heading as="h3" size="lg">
-        CRA&nbsp;{article}
-      </Heading>
+      <Text fontSize="xl">CRA&nbsp;{article}</Text>
       <MonthSelector
         defaulMonth={defaultMonth}
         onChange={(newMonth) =>
