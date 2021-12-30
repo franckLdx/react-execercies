@@ -1,16 +1,16 @@
-import React, { FC, useCallback, useContext, useMemo } from 'react'
+import React, { FC, useContext, useMemo } from 'react'
 
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { TextField } from '@mui/material';
+import TextField from '@mui/material/TextField';
 import { Controller, useForm } from 'react-hook-form';
 import * as yup from "yup";
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { useLogin } from './useLogin';
-import { emailInvalideErrorMessage, requiredString } from '../formUtils';
+import { displayFieldError, emailInvalideErrorMessage, requiredString } from '../formUtils';
 import { isAuthenticationErrorType } from './authenticationError';
 import { loginContext } from './loginContext';
 import { AlertError } from '../error/AlertError';
@@ -29,34 +29,26 @@ export const LoginForm: FC = () => {
     []
   );
 
-  const defaultValues = useMemo<FormFields>(
-    () => ({
-      email: "",
-      password: ""
-    }),
-    []
-  );
-
   const { setToken } = useContext(loginContext);
   const mutation = useLogin();
 
   const { handleSubmit, formState, control } = useForm<FormFields>({
     resolver: yupResolver(schema),
-    defaultValues
+    defaultValues: {
+      email: "",
+      password: ""
+    }
   });
 
-  const submit = useCallback(
-    ({ email, password }: FormFields) => {
-      mutation.mutate(
-        { email, password },
-        {
-          onSuccess: setToken,
-          onError: () => setToken(undefined),
-        }
-      )
-    },
-    []
-  );
+  const submit = ({ email, password }: FormFields) => {
+    mutation.mutate(
+      { email, password },
+      {
+        onSuccess: setToken,
+        onError: () => setToken(undefined),
+      }
+    )
+  };
 
   return (
     <Container fixed maxWidth="sm" >
@@ -70,17 +62,16 @@ export const LoginForm: FC = () => {
               <Controller
                 name="email"
                 control={control}
-                render={({ field }) => (
+                render={({ field }) =>
                   <TextField
                     {...field}
                     label='email'
                     variant="filled"
                     autoComplete='email'
                     aria-label='Plese enter email'
-                    error={formState.errors.email !== undefined}
-                    helperText={formState.errors.email?.message}
+                    {...displayFieldError(formState.errors.email)}
                   />
-                )}
+                }
               />
               <Controller
                 name="password"
@@ -93,9 +84,9 @@ export const LoginForm: FC = () => {
                     type="password"
                     autoComplete='password'
                     aria-label='Plese enter password'
-                    error={formState.errors.password !== undefined}
-                    helperText={formState.errors.password?.message}
-                  />}
+                    {...displayFieldError(formState.errors.password)}
+                  />
+                }
               />
             </Stack>
             <Button

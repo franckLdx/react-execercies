@@ -10,7 +10,6 @@ import './index.css'
 
 start();
 
-
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>

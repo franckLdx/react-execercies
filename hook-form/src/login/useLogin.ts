@@ -1,5 +1,5 @@
 import { useMutation } from "react-query"
-import { AuthenticationError, authenticationError } from "./authenticationError";
+import { AuthenticationError } from "./authenticationError";
 
 interface Credentials {
   email: string,
