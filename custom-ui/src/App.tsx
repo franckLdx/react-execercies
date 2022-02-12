@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import logo from './logo.svg'
+import { Button } from '@chakra-ui/react'
+
 import './App.css'
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
           </a>
         </p>
       </header>
+      <Button colorScheme='yellow'>Click me!</Button>
     </div>
   )
 }
