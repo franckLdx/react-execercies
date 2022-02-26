@@ -16,11 +16,11 @@ export const Button: ComponentStyleConfig = {
   },
   variants: {
     primary: {
-      color: "brand.color.primary",
-      bgColor: "brand.bgColor.primary",
+      color: "brand.white",
+      bgColor: "brand.yellow",
       _disabled: {
-        color: 'brand.color.primary',
-        bgColor: 'brand.bgColor.disabled',
+        color: 'brand.white',
+        bgColor: 'brand.grey',
         pointerEvents: 'none',
         opacity: 0.65,
       }
