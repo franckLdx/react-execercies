@@ -20,7 +20,7 @@ export const Button: ComponentStyleConfig = {
       bgColor: "brand.yellow",
       _disabled: {
         color: 'brand.white',
-        bgColor: 'brand.grey',
+        bgColor: 'brand.darkGrey',
         pointerEvents: 'none',
         opacity: 0.65,
       }

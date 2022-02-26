@@ -1,16 +1,16 @@
 import { ComponentStyleConfig } from "@chakra-ui/react";
 
 const hover = {
-  bgColor: "brand.hover",
+  bgColor: "brand.lightGrey",
   boxShadow: 'none',
 }
 
 const checked = {
-  color: "brand.primary",
-  background: "brand.secondary",
-  bgColor: "brand.secondary",
+  color: "brand.yellow",
+  bgColor: "brand.white",
+  background: "brand.white",
+  borderColor: "brand.lightGrey",
   boxShadow: 'none',
-  borderColor: "brand.disabled",
 }
 
 export const Radio: ComponentStyleConfig = {
@@ -19,7 +19,7 @@ export const Radio: ComponentStyleConfig = {
     brand: {
       control: {
         color: "brand.ternary",
-        bgColor: "brand.secondary",
+        bgColor: "brand.white",
         _hover: hover,
         _active: hover,
         _focus: hover,
@@ -36,7 +36,7 @@ export const Radio: ComponentStyleConfig = {
     md: {
       control: {
         backgroundClip: 'content-box',
-        padding: '4px',
+        padding: '3px',
         width: "26px",
         height: "26px",
         borderWidth: "1px",
