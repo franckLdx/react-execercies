@@ -1,28 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Button } from '@chakra-ui/react';
+import React, { FC } from 'react';
+import { Button, HStack, Radio, RadioGroup, VStack } from '@chakra-ui/react';
+import { CardComponent } from './components/CardComponents';
 
-function App() {
+export const App: FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Button bgColor={"brand.primary"}>Click me!</Button>
-    </div>
+    <VStack spacing="50px">
+      <CardComponent>
+        <Button >Click me!</Button>
+        <Button disabled={true}>Click me!</Button>
+      </CardComponent>
+      <CardComponent>
+        <RadioGroup variant="brand" size="md">
+          <HStack spacing="20px">
+            <Radio value="1">Select me!</Radio>
+            <Radio value="2">No me!</Radio>
+          </HStack>
+        </RadioGroup>
+      </CardComponent>
+    </VStack >
   );
 }
-
-export default App;
