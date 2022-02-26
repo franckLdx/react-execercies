@@ -1,6 +1,6 @@
 import { ComponentStyleConfig } from "@chakra-ui/react";
 
-const visited = {
+const hover = {
   opacity: 0.8
 }
 
@@ -9,21 +9,21 @@ export const Button: ComponentStyleConfig = {
     paddingX: '5px',
     paddingY: '10px',
     borderRadius: '3px',
-    _hover: visited,
-    _visited: visited,
-    _active: visited,
-    _focus: visited,
-    _disabled: {
-      color: 'brand.secondary',
-      bgColor: 'brand.disabled',
-      pointerEvents: 'none',
-      opacity: 0.65,
-    }
+    _hover: hover,
+    _visited: hover,
+    _active: hover,
+    _focus: hover,
   },
   variants: {
-    brand: {
-      bgColor: "brand.primary",
-      color: "brand.secondary",
+    primary: {
+      color: "brand.color.primary",
+      bgColor: "brand.bgColor.primary",
+      _disabled: {
+        color: 'brand.color.primary',
+        bgColor: 'brand.bgColor.disabled',
+        pointerEvents: 'none',
+        opacity: 0.65,
+      }
     },
   },
   sizes: {
@@ -36,8 +36,8 @@ export const Button: ComponentStyleConfig = {
     },
   },
   defaultProps: {
+    variant: "primary",
     size: "md",
-    variant: "brand",
     textStyle: 'normal'
   }
 }
