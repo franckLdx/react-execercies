@@ -2,8 +2,8 @@ import { extendTheme } from "@chakra-ui/react"
 import { Button } from './button'
 import { Card } from './card'
 import { Radio } from './radio'
-import { textStyles } from './textStyles'
 import { Select } from './select'
+import { textStyles } from './textStyles'
 import { colors } from './colors'
 import { config } from './config'
 

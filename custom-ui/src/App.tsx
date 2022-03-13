@@ -3,7 +3,7 @@ import { Button, HStack, Radio, RadioGroup, VStack, Select } from '@chakra-ui/re
 import { ComponentsCard } from './components/ComponentsCard';
 
 export const App: FC = () => (
-  <VStack spacing="50px" padding="20px" backgroundColor={"brand.veryLightGray"}>
+  <VStack spacing="50px" padding="20px" backgroundColor={"brand.veryLightGrey"}>
     <ComponentsCard>
       <Button >Click me!</Button>
       <Button disabled={true}>Click me!</Button>
