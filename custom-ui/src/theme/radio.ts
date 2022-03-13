@@ -16,7 +16,7 @@ const checked = {
 export const Radio: ComponentStyleConfig = {
   parts: ['control'],
   variants: {
-    brand: {
+    primary: {
       control: {
         color: "brand.black",
         bgColor: "brand.white",
@@ -52,6 +52,6 @@ export const Radio: ComponentStyleConfig = {
   },
   defaultProps: {
     size: "md",
-    variant: "brand",
+    variant: "primary",
   }
 }

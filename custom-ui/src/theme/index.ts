@@ -1,8 +1,10 @@
 import { extendTheme } from "@chakra-ui/react"
-import { colors } from './colors'
 import { Button } from './button'
+import { Card } from './card'
 import { Radio } from './radio'
 import { textStyles } from './textStyles'
+import { Select } from './select'
+import { colors } from './colors'
 import { config } from './config'
 
 export const theme = extendTheme({
@@ -11,6 +13,8 @@ export const theme = extendTheme({
   colors,
   components: {
     Button,
+    Card,
     Radio,
+    Select,
   },
 })

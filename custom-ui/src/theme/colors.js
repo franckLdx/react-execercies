@@ -2,6 +2,7 @@ export const colors = {
   brand: {
     white: "#fff",
     yellow: "#f8cb70",
+    veryLightGray: "#f2f2f2",
     lightGrey: "#d8d8d8",
     darkGrey: "#989898",
     black: '#232323',
