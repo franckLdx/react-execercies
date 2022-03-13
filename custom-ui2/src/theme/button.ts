@@ -13,17 +13,23 @@ export const Button: ComponentStyleConfig = {
     _visited: hover,
     _active: hover,
     _focus: hover,
+    _disabled: {
+      color: 'brand.white',
+      bgColor: 'brand.darkGrey',
+      pointerEvents: 'none',
+      opacity: 0.65,
+    }
   },
   variants: {
     primary: {
       color: "brand.white",
       bgColor: "brand.yellow",
-      _disabled: {
-        color: 'brand.white',
-        bgColor: 'brand.darkGrey',
-        pointerEvents: 'none',
-        opacity: 0.65,
-      }
+    },
+    secondary: {
+      color: "brand.black",
+      bgColor: "brand.white",
+      borderColor: "brand.black",
+      borderWidth: "2px",
     },
   },
   sizes: {

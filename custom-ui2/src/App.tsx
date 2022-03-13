@@ -10,6 +10,10 @@ export const App: FC = () => {
         <Button disabled={true}>Click me!</Button>
       </CardComponent>
       <CardComponent>
+        <Button variant="secondary">Click me!</Button>
+        <Button disabled={true}>Click me!</Button>
+      </CardComponent>
+      <CardComponent>
         <RadioGroup variant="brand" size="md">
           <HStack spacing="20px">
             <Radio value="1">Select me!</Radio>

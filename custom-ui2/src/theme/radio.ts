@@ -18,7 +18,7 @@ export const Radio: ComponentStyleConfig = {
   variants: {
     brand: {
       control: {
-        color: "brand.ternary",
+        color: "brand.black",
         bgColor: "brand.white",
         _hover: hover,
         _active: hover,
