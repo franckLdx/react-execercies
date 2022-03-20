@@ -15,7 +15,7 @@ export const Select: ComponentStyleConfig = {
         borderLeftColor: "brand.lightGrey",
         borderLeftWidth: "1px",
         borderLeftStyle: "solid",
-        left: '60%'
+        left: '65%'
       },
     }
   },
