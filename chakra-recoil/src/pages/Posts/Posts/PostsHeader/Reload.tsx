@@ -5,14 +5,16 @@ import Button from "@chakra-ui/core/dist/Button";
 import Icon from "@chakra-ui/core/dist/Icon";
 import Text from "@chakra-ui/core/dist/Text";
 import { format } from "date-fns";
-import { loadedPostsDateState } from "../../../../state/posts/atoms";
+import { loadedPostsDateState } from "../../../../state";
 
 export type ReloadProps = Pick<BoxProps, 'marginRight'>;
 
 export const Reload: FunctionComponent<ReloadProps> = ({ marginRight }) => {
   const [rawloadedDate, setLoadedDate] = useRecoilState(loadedPostsDateState);
   const reload = useCallback(
-    () => setLoadedDate(new Date()),
+    () => {
+      setLoadedDate(new Date())
+    },
     [setLoadedDate]
   );
   const formattedLoadedDate = useMemo(

@@ -5,7 +5,7 @@ import Text from "@chakra-ui/core/dist/Text";
 import { UserInfo } from "./UserInfo";
 import { AppDivider } from "../../../sharedComponents/AppDivider";
 import { getPostPageUrl } from "../../../routes";
-import { Post } from "../../../model";
+import { Post } from "../../../state";
 
 type PostItemProps = {
   post: Post;
