@@ -1,19 +1,47 @@
-import React, { useState } from 'react';
-import { Autocomplete, Center } from '@mantine/core';
+import { FC, useState } from 'react';
+import {
+  Autocomplete,
+  Center,
+  ComboboxItem,
+  OptionsFilter,
+  Stack,
+} from '@mantine/core';
 import { useDancerSearch } from '@/services/dancerSearch';
 
-export function DancerSearch() {
+interface DancerSearchProps {
+  onDancerSelected: (wscid: number) => void
+}
+
+export const DancerSearch: FC<DancerSearchProps> = ({ onDancerSelected }) => {
   const [value, setValue] = useState<string>('');
   const query = useDancerSearch(value);
 
+  const onSelected = (selectedValue: string) => {
+    setValue(selectedValue);
+    const dancerItem = selectedValue
+      ? query.data!.find((dancer) => dancer.name === selectedValue)
+      : undefined;
+    if (dancerItem) {
+      onDancerSelected(dancerItem.wscid);
+    }
+  };
+
+  const filter: OptionsFilter = ({ options }) => {
+    const filtered = (options as ComboboxItem[]).sort((a, b) => a.label.localeCompare(b.label));
+    return filtered;
+  };
+
   return (
-    <Center maw={400} h={100} bg="var(--mantine-color-gray-light)">
-      <Autocomplete
-        data={query.data?.map((dancer) => dancer.name)}
-        maw={300}
-        placeholder="Search by name or WSCD #"
-        onChange={setValue}
-      />
-    </Center>
+    <Stack>
+      <Center maw={400} h={100} bg="var(--mantine-color-gray-light)">
+        <Autocomplete
+          data={query.data?.map((dancer) => dancer.name)}
+          maw={300}
+          filter={filter}
+          placeholder="Search by name or WSCD #"
+          onChange={onSelected}
+        />
+      </Center>
+    </Stack>
   );
-}
+};
