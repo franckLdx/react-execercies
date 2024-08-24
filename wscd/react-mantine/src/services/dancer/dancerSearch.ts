@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { wsdc } from './wscd';
+import { wsdc } from '../wscd';
 
 export interface DancerItemModel {
   name: string;

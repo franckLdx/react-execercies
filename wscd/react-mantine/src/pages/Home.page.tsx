@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Welcome } from '../components/Welcome/Welcome';
 import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { DancerSearch } from '@/components/DancerSearch/DancerSearch';
-import { Dancer } from '@/components/Dancer';
+import { Dancer } from '@/components/dancer/Dancer';
 
 export function HomePage() {
   const [wscid, setWscid] = useState<number | undefined>();
@@ -11,7 +11,11 @@ export function HomePage() {
     <>
       <Welcome />
       <ColorSchemeToggle />
-      <DancerSearch onDancerSelected={(selectedWscid) => { setWscid(selectedWscid); }} />
+      <DancerSearch
+        onDancerSelected={(selectedWscid) => {
+          setWscid(selectedWscid);
+        }}
+      />
       <Dancer wscid={wscid} />
     </>
   );
