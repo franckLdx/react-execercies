@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { wsdc } from '../wscd';
-import { LevelId } from '@/data/level';
+import { LevelShort } from '@/data/level';
 
 export interface LevelExplanationModel {
-  required: LevelId;
-  allowed: LevelId;
+  required: LevelShort;
+  allowed: LevelShort;
 }
 
 interface RoleDModel {
@@ -18,7 +18,7 @@ export type RoleName = 'Follower' | 'Leader';
 
 interface DivisionModel {
   id: number;
-  name: string;
+  name: LevelShort;
 }
 
 export interface LevelModel {
@@ -26,7 +26,7 @@ export interface LevelModel {
   total_points: number;
 }
 
-type WCS = Record<LevelId, LevelModel>;
+type WCS = Record<LevelShort, LevelModel>;
 
 export interface DancerModel {
   wscid: number;

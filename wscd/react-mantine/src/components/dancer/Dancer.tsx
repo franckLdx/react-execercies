@@ -19,7 +19,7 @@ export const Dancer: FC<DancerProps> = ({ wscid }) => {
 
   return (
     <Card bg="var(--mantine-color-dark-5)">
-      {(query.isLoading) && <Loader color="blue" />}
+      {query.isLoading && <Loader color="blue" />}
       {query.isError && <LoadError />}
       {dancer && (
         <>

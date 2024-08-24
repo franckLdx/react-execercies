@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Stack, Text } from '@mantine/core';
 import { LevelExplanationModel, LevelModel, RoleName } from '@/services/dancer/getDancer';
-import { leveNamelByLevelid } from '@/data/level';
+import { compareLevelShort, leveNamelByLevelShort } from '@/data/level';
 
 interface DisplayLevelsProps {
   role: RoleName;
@@ -10,9 +10,11 @@ interface DisplayLevelsProps {
 }
 
 export const DisplayLevels: FC<DisplayLevelsProps> = ({ role, levelExplanation, levels }) => {
-  const displayedLevels = levels.sort((level1, level2) => level2.division.id - level1.division.id);
-  const allowed = leveNamelByLevelid[levelExplanation.allowed];
-  const minimum = leveNamelByLevelid[levelExplanation.required];
+  const displayedLevels = levels.sort((level1, level2) =>
+    compareLevelShort(level1.division.name, level2.division.name)
+  );
+  const allowed = leveNamelByLevelShort[levelExplanation.allowed];
+  const minimum = leveNamelByLevelShort[levelExplanation.required];
   const textExplanation = `Niveau authorisé: ${allowed}, Niveau minimum: ${minimum}`;
 
   return (
