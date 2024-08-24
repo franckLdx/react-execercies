@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { Container } from '@mantine/core';
 import { Welcome } from '../components/Welcome/Welcome';
-import { ColorSchemeToggle } from '../components/ColorSchemeToggle/ColorSchemeToggle';
 import { DancerSearch } from '@/components/DancerSearch/DancerSearch';
 import { Dancer } from '@/components/dancer/Dancer';
 
@@ -10,13 +10,10 @@ export function HomePage() {
   return (
     <>
       <Welcome />
-      <ColorSchemeToggle />
-      <DancerSearch
-        onDancerSelected={(selectedWscid) => {
-          setWscid(selectedWscid);
-        }}
-      />
-      <Dancer wscid={wscid} />
+      <Container bg="var(--mantine-color-dark-6)">
+        <DancerSearch onDancerSelected={setWscid} />
+        <Dancer wscid={wscid} />
+      </Container>
     </>
   );
 }

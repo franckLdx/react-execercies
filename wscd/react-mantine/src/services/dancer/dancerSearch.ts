@@ -16,4 +16,5 @@ export const useDancerSearch = (filter: string) =>
     },
     enabled: !!filter,
     gcTime: 1000 * 60 * 5,
+    retry: 1,
   });

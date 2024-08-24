@@ -18,16 +18,24 @@ export const Dancer: FC<DancerProps> = ({ wscid }) => {
   const nonDominateLevels = getPlacements(dancer?.non_dominate_data);
 
   return (
-    <Card>
-      {(query.isFetching || query.isLoading) && <Loader color="blue" />}
+    <Card bg="var(--mantine-color-dark-5)">
+      {(query.isLoading) && <Loader color="blue" />}
       {query.isError && <LoadError />}
       {dancer && (
         <>
           <Header dancer={dancer} />
           <Group>
-            <DisplayLevels levels={dominateLevels} />
+            <DisplayLevels
+              role={dancer.short_dominate_role}
+              levelExplanation={dancer.dominate_data.level}
+              levels={dominateLevels}
+            />
             <Space h="md" />
-            <DisplayLevels levels={nonDominateLevels} />
+            <DisplayLevels
+              role={dancer.short_non_dominate_role}
+              levelExplanation={dancer.non_dominate_data.level}
+              levels={nonDominateLevels}
+            />
           </Group>
         </>
       )}

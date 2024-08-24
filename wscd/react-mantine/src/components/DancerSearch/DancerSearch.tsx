@@ -27,8 +27,8 @@ export const DancerSearch: FC<DancerSearchProps> = ({ onDancerSelected }) => {
   };
 
   return (
-    <Stack>
-      <Center maw={400} h={100} bg="var(--mantine-color-gray-light)">
+    <Center h={100}>
+      <Stack>
         <Autocomplete
           data={query.data?.map((dancer) => dancer.name)}
           maw={300}
@@ -36,8 +36,8 @@ export const DancerSearch: FC<DancerSearchProps> = ({ onDancerSelected }) => {
           placeholder="Search by name or WSCD #"
           onChange={onSelected}
         />
-        {query.isError && (<LoadError />)}
-      </Center>
-    </Stack>
+        {query.isError && <LoadError />}
+      </Stack>
+    </Center>
   );
 };

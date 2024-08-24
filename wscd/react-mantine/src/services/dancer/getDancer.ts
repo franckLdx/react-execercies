@@ -1,19 +1,20 @@
 import { useQuery } from '@tanstack/react-query';
 import { wsdc } from '../wscd';
+import { LevelId } from '@/data/level';
+
+export interface LevelExplanationModel {
+  required: LevelId;
+  allowed: LevelId;
+}
 
 interface RoleDModel {
-  level: {
-    required: string;
-    allowed: string;
-  };
+  level: LevelExplanationModel;
   placements: {
     'West Coast Swing': WCS;
   };
 }
 
-type Role = 'Follower' | 'Leader';
-
-type Level = 'CHMP' | 'ALS' | 'ADV' | 'INT' | 'NOV' | 'NEW';
+export type RoleName = 'Follower' | 'Leader';
 
 interface DivisionModel {
   id: number;
@@ -25,7 +26,7 @@ export interface LevelModel {
   total_points: number;
 }
 
-type WCS = Record<Level, LevelModel>;
+type WCS = Record<LevelId, LevelModel>;
 
 export interface DancerModel {
   wscid: number;
@@ -33,8 +34,8 @@ export interface DancerModel {
   dancer_last: string;
   dominate_data: RoleDModel;
   non_dominate_data: RoleDModel;
-  short_dominate_role: Role;
-  short_non_dominate_role: Role;
+  short_dominate_role: RoleName;
+  short_non_dominate_role: RoleName;
   placements: {
     'West Coast Swing': WCS;
   };
