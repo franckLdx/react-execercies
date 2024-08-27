@@ -1,7 +1,8 @@
 import { FC } from 'react';
 import { Button, Center } from '@mantine/core';
 import { useGetDancer } from '@/services/dancer/getDancer';
-import { useGetRegisteredDancers, useRegisterDancer } from '@/services/registration/registeredDancers';
+import { registeredDancersAtom } from '@/services/registration/registeredDancers';
+import { useAtom } from 'jotai';
 
 interface RegisterDancerProps {
   wscid: number | undefined;
@@ -10,9 +11,11 @@ interface RegisterDancerProps {
 export const RegisterDancer: FC<RegisterDancerProps> = ({ wscid }) => {
   const query = useGetDancer(wscid);
 
-  const registeredDancers = useGetRegisteredDancers();
-  const registerDancer = useRegisterDancer()
-  const onRegister = wscid ? () => registerDancer(wscid) : () => { }
+  const [registeredDancers, setRegisteredDancersAtom] = useAtom(registeredDancersAtom);
+
+  const onRegister = wscid
+    ? () => setRegisteredDancersAtom([...registeredDancers, wscid])
+    : () => {};
 
   if (wscid === undefined || !query.data || registeredDancers.includes(wscid)) {
     return null;
