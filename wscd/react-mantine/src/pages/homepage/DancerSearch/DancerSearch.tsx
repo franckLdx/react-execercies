@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Autocomplete, Center, ComboboxItem, OptionsFilter, Stack } from '@mantine/core';
 import { useDancerSearch } from '@/services/dancer/dancerSearch';
-import { LoadError } from '../LoadError';
+import { LoadError } from '../../../components/LoadError';
 
 interface DancerSearchProps {
   onDancerSelected: (wscid: number) => void;

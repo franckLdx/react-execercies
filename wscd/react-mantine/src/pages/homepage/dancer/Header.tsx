@@ -7,7 +7,7 @@ interface HeaderProps {
 }
 
 export const Header: FC<HeaderProps> = ({ dancer }) => (
-  <Text tt="capitalize" ta="center">
+  <Text fw={900} tt="capitalize" ta="center" size="xl">
     {dancer.dancer_first} {dancer.dancer_last} {dancer.wscid}
   </Text>
 );
