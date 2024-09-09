@@ -13,17 +13,22 @@ export const RegisterDancer: FC<RegisterDancerProps> = ({ wscid }) => {
 
   const [registeredDancers, setRegisteredDancersAtom] = useAtom(registeredDancersAtom);
 
+
   const onRegister = wscid
     ? () => setRegisteredDancersAtom([...registeredDancers, wscid])
-    : () => {};
+    : () => { };
 
-  if (wscid === undefined || !query.data || registeredDancers.includes(wscid)) {
+  if (wscid === undefined || !query.data) {
     return null;
   }
 
+  const isRegisteread = registeredDancers.includes(wscid)
+
+  const label = isRegisteread ? "Registered" : "Register"
+
   return (
     <Center h={100}>
-      <Button onClick={onRegister}>Register</Button>
+      <Button onClick={onRegister} disabled={isRegisteread}>{label}</Button>
     </Center>
   );
 };

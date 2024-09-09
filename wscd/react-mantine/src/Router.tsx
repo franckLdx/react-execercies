@@ -1,10 +1,18 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage } from './pages/homepage/Home.page';
+import { Dancers } from './pages/dancers/Dancers';
+
+export const hompePageUrl = '/'
+export const dancersPageUrl = '/dancers'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: hompePageUrl,
     element: <HomePage />,
+  },
+  {
+    path: dancersPageUrl,
+    element: <Dancers />,
   },
 ]);
 

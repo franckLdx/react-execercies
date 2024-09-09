@@ -1,3 +1,3 @@
-import { atom } from 'jotai';
+import { atomWithStorage } from 'jotai/utils';
 
-export const registeredDancersAtom = atom<number[]>([]);
+export const registeredDancersAtom = atomWithStorage<number[]>('wscdRegitered', []);
