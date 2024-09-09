@@ -1,10 +1,10 @@
 import { FC, useState } from 'react';
 import { Autocomplete, Center, ComboboxItem, OptionsFilter, Stack } from '@mantine/core';
-import { useDancerSearch } from '@/services/dancer/dancerSearch';
+import { DancerSearchModel, useDancerSearch } from '@/services/dancer/dancerSearch';
 import { LoadError } from '../../../components/LoadError';
 
 interface DancerSearchProps {
-  onDancerSelected: (wscid: number) => void;
+  onDancerSelected: (dancer: DancerSearchModel) => void;
 }
 
 export const DancerSearch: FC<DancerSearchProps> = ({ onDancerSelected }) => {
@@ -17,7 +17,7 @@ export const DancerSearch: FC<DancerSearchProps> = ({ onDancerSelected }) => {
       ? query.data!?.find((dancer) => dancer.name === selectedValue)
       : undefined;
     if (dancerItem) {
-      onDancerSelected(dancerItem.wscid);
+      onDancerSelected(dancerItem);
     }
   };
 

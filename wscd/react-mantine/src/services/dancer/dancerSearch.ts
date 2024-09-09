@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { wsdc } from '../wscd';
 
-export interface DancerItemModel {
+export interface DancerSearchModel {
   name: string;
   wscid: number;
 }
@@ -11,7 +11,7 @@ export const useDancerSearch = (filter: string) =>
     queryKey: ['danserSearch', filter],
     queryFn: async () => {
       const url = `autocomplete?q=${filter}`;
-      const response = await wsdc.get<DancerItemModel[]>(url);
+      const response = await wsdc.get<DancerSearchModel[]>(url);
       return response.data;
     },
     enabled: !!filter,

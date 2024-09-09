@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Stack, Text } from '@mantine/core';
 import { LevelExplanationModel, LevelModel, RoleName } from '@/services/dancer/getDancer';
-import { compareLevelShort, leveNamelByLevelShort } from '@/data/level';
+import { compareLevelShort, leveNamelByLevelShort } from '@/services/level';
 
 interface DisplayLevelsProps {
   role: RoleName;

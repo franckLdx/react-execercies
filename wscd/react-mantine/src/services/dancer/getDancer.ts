@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { wsdc } from '../wscd';
-import { LevelShort } from '@/data/level';
+import { LevelShort } from '@/services/level';
 
 export interface LevelExplanationModel {
   required: LevelShort;

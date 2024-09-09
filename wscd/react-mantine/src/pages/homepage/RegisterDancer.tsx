@@ -3,26 +3,27 @@ import { Button, Center } from '@mantine/core';
 import { useGetDancer } from '@/services/dancer/getDancer';
 import { registeredDancersAtom } from '@/services/registration/registeredDancers';
 import { useAtom } from 'jotai';
+import { DancerSearchModel } from '@/services/dancer/dancerSearch';
 
 interface RegisterDancerProps {
-  wscid: number | undefined;
+  dancer?: DancerSearchModel
 }
 
-export const RegisterDancer: FC<RegisterDancerProps> = ({ wscid }) => {
-  const query = useGetDancer(wscid);
+export const RegisterDancer: FC<RegisterDancerProps> = ({ dancer }) => {
+  const query = useGetDancer(dancer?.wscid);
 
   const [registeredDancers, setRegisteredDancersAtom] = useAtom(registeredDancersAtom);
 
 
-  const onRegister = wscid
-    ? () => setRegisteredDancersAtom([...registeredDancers, wscid])
+  const onRegister = dancer?.wscid
+    ? () => setRegisteredDancersAtom([...registeredDancers, dancer])
     : () => { };
 
-  if (wscid === undefined || !query.data) {
+  if (dancer === undefined || !query.data) {
     return null;
   }
 
-  const isRegisteread = registeredDancers.includes(wscid)
+  const isRegisteread = registeredDancers.find(current => current.wscid === dancer?.wscid) !== undefined
 
   const label = isRegisteread ? "Registered" : "Register"
 

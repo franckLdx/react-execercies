@@ -4,16 +4,17 @@ import { DancerSearch } from '@/pages/homepage/DancerSearch/DancerSearch';
 import { Dancer } from '@/pages/homepage/dancer/Dancer';
 import { RegisterDancer } from './RegisterDancer';
 import { PageTemplate } from '@/components/PageTemplate';
+import { DancerSearchModel } from '@/services/dancer/dancerSearch';
 
 export function HomePage() {
-  const [wscid, setWscid] = useState<number | undefined>();
+  const [dancer, setDancer] = useState<DancerSearchModel | undefined>();
 
   return (
     <PageTemplate>
       <Container size="lg" bg="var(--mantine-color-dark-6)">
-        <DancerSearch onDancerSelected={setWscid} />
-        <Dancer wscid={wscid} />
-        <RegisterDancer wscid={wscid} />
+        <DancerSearch onDancerSelected={setDancer} />
+        <Dancer dancer={dancer} />
+        <RegisterDancer dancer={dancer} />
       </Container>
     </PageTemplate>
   );
