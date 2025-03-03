@@ -1,0 +1,17 @@
+.AccordionItem {
+  width: 1000px; 
+  border: 1px solid;
+}
+
+.AccordionTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.AccordionContent {
+  padding: 2px;
+}
