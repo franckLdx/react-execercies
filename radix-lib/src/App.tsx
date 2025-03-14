@@ -1,5 +1,4 @@
-import { ComboBox } from "./components/comboBox/ComboBox"
-import { ComboBoxItem } from "./components/comboBox/ComboBoxItem"
+import { ComboBox, ComboBoxItem } from "./components/comboBox"
 import { useState } from "react"
 
 import classes from './app.module.scss'
