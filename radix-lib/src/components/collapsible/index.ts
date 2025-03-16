@@ -1,0 +1,1 @@
+export { Collapbible } from './Collapbible'
