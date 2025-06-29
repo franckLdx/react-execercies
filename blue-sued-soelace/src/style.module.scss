@@ -1,0 +1,12 @@
+:global {
+  sl-button[variant="primary"] {
+    &::part(base) {
+      font-family: Roboto, Arial, Helvetica, Tahoma, sans-serif;
+      font-size: 16px;
+      padding: 8px;
+      color: black;
+      background-color: #f5b027;
+      border-radius: 5px;
+    }
+  }
+}
