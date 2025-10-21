@@ -21,7 +21,13 @@ function Title({ children }: CardProps) {
   )
 }
 
+function Buttons({ children }: CardProps) {
+  return <ark.div className="my-1 border-t border-gray-300">{children}</ark.div>
+
+}
+
 export const Card = {
   Root,
-  Title
+  Title,
+  Buttons
 }
