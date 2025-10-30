@@ -1,26 +1,19 @@
-"use client"
 
-import { OrderedProduct } from "./OrderedProduct"
 import { QueryProdiver } from "@/src/services/query"
-import { CartModel } from "@/src/services/cart/declaration"
-import { use, useEffect } from "react"
+import { Suspense } from "react"
+import { OrderedProducts } from "./OrderedProducts"
+import { getCart } from "../_services/cart/serverFunctions"
 
-type SummaryProps = {
-  cartPromise: Promise<CartModel>
-}
-
-export function Summary({ cartPromise }: SummaryProps) {
-  // const cart = use(cartPromise)
-
-  // useEffect(() => console.log("Summary"), [])
+export function Summary() {
+  const cartPromise = getCart()
 
   return (
     <QueryProdiver>
       <section>
         <h1>Votre panier</h1>
-        {/* {cart.products.map(product => (
-          <OrderedProduct key={product.productId} cartProduct={product} />
-        ))} */}
+        <Suspense fallback={<div>Loading cart...</div>}>
+          <OrderedProducts cartPromise={cartPromise} />
+        </Suspense>
       </section>
     </QueryProdiver >
   )

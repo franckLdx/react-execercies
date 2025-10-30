@@ -8,11 +8,14 @@ import { revalidateTag } from "next/cache";
 const TAG = 'cart'
 
 export async function getCart() {
-  const response = await fetch('https://fakestoreapi.com/carts/5', { next: { tags: [TAG] } })
+  console.log('******************* START')
+  const response = await fetch('https://fakestoreapi.com/carts/5', { next: { tags: [TAG] }, cache: 'no-store' })
   if (!response.ok) {
     throw new Error("Failed to addd product")
   }
-  return await response.json() as CartModel
+  const cart = await response.json() as CartModel
+  console.log('******************* STOP')
+  return cart
 }
 
 export async function addProduct(product: ProductModel) {
