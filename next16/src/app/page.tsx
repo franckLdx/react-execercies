@@ -6,7 +6,9 @@ export default async function Home() {
   return (
     <div className="grid grid-cols-[1fr_400px] gap-4">
       <main className="flex gap-4">
-        <Products />
+        <Suspense fallback={<p>Catalogue</p>}>
+          <Products />
+        </Suspense>
       </main>
       <aside>
         <Summary />

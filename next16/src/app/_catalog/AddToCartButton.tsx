@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "../../components/Button"
-import { addProduct } from "../../services/cart/serverFunctions"
+import { addProductToCart } from "../../services/cart/serverFunctions"
 import { ProductModel } from "@/src/services/products/declaration"
 
 type ProductProps = {
@@ -11,7 +11,7 @@ export function AddToCartButton({
   product
 }: ProductProps) {
   const onAddProduct = async () => {
-    await addProduct(product)
+    await addProductToCart(product)
   }
 
   return (

@@ -2,7 +2,7 @@
 import { QueryProdiver } from "@/src/services/query"
 import { Suspense } from "react"
 import { OrderedProducts } from "./OrderedProducts"
-import { getCart } from "../_services/cart/serverFunctions"
+import { getCart } from "@/src/services/cart/serverFunctions"
 
 export function Summary() {
   const cartPromise = getCart()
