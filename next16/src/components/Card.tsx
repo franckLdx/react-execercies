@@ -22,7 +22,7 @@ function Title({ children }: CardProps) {
 }
 
 function Buttons({ children }: CardProps) {
-  return <ark.div className="my-1 border-t border-gray-300">{children}</ark.div>
+  return <ark.div className="inline my-1 border-t border-gray-300">{children}</ark.div>
 
 }
 
